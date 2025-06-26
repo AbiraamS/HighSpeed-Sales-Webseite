@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt - HighSpeed-Sales</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .navbar {
+      background-color: white; /* Weißer Hintergrund */
+      color: #2e86de; /* Blaue Schrift */
+      padding: 20px;
+      display: flex;
+      justify-content: center; /* Zentriert das Logo */
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* Ermöglicht absolute Positionierung des Dropdown-Menüs */
+    }
+
+    .navbar-logo {
+      height: 97px;
+    }
+
+    .dropdown {
+  position: absolute; /* Positioniert das Dropdown-Menü unabhängig vom Logo */
+  right: 0px; /* Abstand vom rechten Rand */
+  top: 29px; /* Vertikale Zentrierung */
+  transform: translateY(-50%); /* Korrektur für vertikale Zentrierung */
+}
+
+.dropdown-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 2.5rem;
+  padding: 5px;
+  position: relative;
+  top: -5px;
+}
+
+.dropdown-button::before {
+  content: "☰";
+  font-size: 2.5rem;
+  color: #2e86de;
+}
+
+.dropdown-button:hover::before {
+  color: #1b4f91;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 100vw;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px 0;
+  list-style: none;
+  margin: 0;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  padding: 15px 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-menu li a:hover {
+  color: #2e86de;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+    .gray-section {
+      background-color: #f4f4f4; /* Grauer Hintergrund */
+      height: 50px; /* Höhe des grauen Bereichs */
+    }
+
+    .contact-info {
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #2e86de;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .social-media {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+    }
+
+    .social-links li a {
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links li a:hover {
+      transform: scale(1.1);
+    }
+
+    .map {
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .map iframe {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background-color: #2e86de;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    /* Zusätzliche CSS für die Produktdarstellung */
+    .products {
+  display: flex;
+  flex-wrap: wrap; /* Karten umbrechen, wenn der Platz nicht ausreicht */
+  gap: 30px; /* Abstand zwischen den Karten erhöhen */
+  justify-content: center; /* Karten zentrieren */
+  padding: 20px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 280px; /* Breite der Produktkarte angepasst */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Inhalte gleichmäßig verteilen */
+}
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.product-card p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.product-card button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.product-card button:hover {
+  background-color: #0056b3;
+}
+
+.product-card img {
+  width: 280px; /* Einheitliche Breite */
+  height: 300px; /* Einheitliche Höhe */
+  object-fit: cover; /* Bild wird zugeschnitten, um die Größe zu erfüllen */
+  margin: 0 auto 15px; /* Zentriert das Bild horizontal und fügt unten einen Abstand hinzu */
+  display: block; /* Stellt sicher, dass das Bild als Blockelement behandelt wird */
+}
+
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="home.html">
+      <img src="HighSpeed_Logo_weiß-blau-groeßer.png" alt="HighSpeed-Sales Logo" class="navbar-logo">
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <button class="dropdown-button"></button>
+          <ul class="dropdown-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="configurator.html">PC-Konfigurator</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="cart.html" class="cart-icon">
+      <img src="Einkaufswagen.png" alt="Warenkorb" class="cart-icon-image">
+      <span class="cart-count" id="cart-count">0</span>
+    </a>
+  </header>
+
+  <section class="products">
+    <div class="product-card">
+      <img src="asus-rog-maximus-z790-hero.jpg" alt="ASUS ROG Maximus Z790 Hero" class="product-image">
+      <h3>ASUS ROG Maximus Z790 Hero</h3>
+      <p>Preis: 599€</p>
+      <button onclick="addToCart('ASUS ROG Maximus Z790 Hero', 599)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="msi-meg-z790-ace.jpg" alt="MSI MEG Z790 ACE" class="product-image">
+      <h3>MSI MEG Z790 ACE</h3>
+      <p>Preis: 579€</p>
+      <button onclick="addToCart('MSI MEG Z790 ACE', 579)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="gigabyte-z790-aorus-master.jpg" alt="Gigabyte Z790 AORUS Master" class="product-image">
+      <h3>Gigabyte Z790 AORUS Master</h3>
+      <p>Preis: 469€</p>
+      <button onclick="addToCart('Gigabyte Z790 AORUS Master', 469)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asus-tuf-gaming-z790-plus-wifi.jpg" alt="ASUS TUF Gaming Z790-Plus WiFi" class="product-image">
+      <h3>ASUS TUF Gaming Z790-Plus WiFi</h3>
+      <p>Preis: 269€</p>
+      <button onclick="addToCart('ASUS TUF Gaming Z790-Plus WiFi', 269)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="msi-pro-z790-p-wifi.jpg" alt="MSI PRO Z790-P WiFi" class="product-image">
+      <h3>MSI PRO Z790-P WiFi</h3>
+      <p>Preis: 209€</p>
+      <button onclick="addToCart('MSI PRO Z790-P WiFi', 209)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asrock-z790-steel-legend-wifi.jpg" alt="ASRock Z790 Steel Legend WiFi" class="product-image">
+      <h3>ASRock Z790 Steel Legend WiFi</h3>
+      <p>Preis: 229€</p>
+      <button onclick="addToCart('ASRock Z790 Steel Legend WiFi', 229)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="gigabyte-b760-aorus-elite-ax.jpg" alt="Gigabyte B760 AORUS Elite AX" class="product-image">
+      <h3>Gigabyte B760 AORUS Elite AX</h3>
+      <p>Preis: 159€</p>
+      <button onclick="addToCart('Gigabyte B760 AORUS Elite AX', 159)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asus-prime-b760m-a-wifi.jpg" alt="ASUS Prime B760M-A WiFi" class="product-image">
+      <h3>ASUS Prime B760M-A WiFi</h3>
+      <p>Preis: 139€</p>
+      <button onclick="addToCart('ASUS Prime B760M-A WiFi', 139)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="msi-b760-tomahawk-wifi.jpg" alt="MSI B760 Tomahawk WiFi" class="product-image">
+      <h3>MSI B760 Tomahawk WiFi</h3>
+      <p>Preis: 169€</p>
+      <button onclick="addToCart('MSI B760 Tomahawk WiFi', 169)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asrock-b760m-pro-rs.jpg" alt="ASRock B760M Pro RS" class="product-image">
+      <h3>ASRock B760M Pro RS</h3>
+      <p>Preis: 119€</p>
+      <button onclick="addToCart('ASRock B760M Pro RS', 119)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asus-rog-crosshair-x670e-hero.jpg" alt="ASUS ROG Crosshair X670E Hero" class="product-image">
+      <h3>ASUS ROG Crosshair X670E Hero</h3>
+      <p>Preis: 599€</p>
+      <button onclick="addToCart('ASUS ROG Crosshair X670E Hero', 599)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="msi-meg-x670e-ace.jpg" alt="MSI MEG X670E ACE" class="product-image">
+      <h3>MSI MEG X670E ACE</h3>
+      <p>Preis: 549€</p>
+      <button onclick="addToCart('MSI MEG X670E ACE', 549)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="gigabyte-x670e-aorus-master.jpg" alt="Gigabyte X670E AORUS Master" class="product-image">
+      <h3>Gigabyte X670E AORUS Master</h3>
+      <p>Preis: 429€</p>
+      <button onclick="addToCart('Gigabyte X670E AORUS Master', 429)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asrock-x670e-taichi.jpg" alt="ASRock X670E Taichi" class="product-image">
+      <h3>ASRock X670E Taichi</h3>
+      <p>Preis: 479€</p>
+      <button onclick="addToCart('ASRock X670E Taichi', 479)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asus-tuf-gaming-x670e-plus-wifi.jpg" alt="ASUS TUF Gaming X670E-Plus WiFi" class="product-image">
+      <h3>ASUS TUF Gaming X670E-Plus WiFi</h3>
+      <p>Preis: 289€</p>
+      <button onclick="addToCart('ASUS TUF Gaming X670E-Plus WiFi', 289)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="msi-pro-x670-p-wifi.jpg" alt="MSI PRO X670-P WiFi" class="product-image">
+      <h3>MSI PRO X670-P WiFi</h3>
+      <p>Preis: 229€</p>
+      <button onclick="addToCart('MSI PRO X670-P WiFi', 229)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="gigabyte-b650-aorus-elite-ax.jpg" alt="Gigabyte B650 AORUS Elite AX" class="product-image">
+      <h3>Gigabyte B650 AORUS Elite AX</h3>
+      <p>Preis: 179€</p>
+      <button onclick="addToCart('Gigabyte B650 AORUS Elite AX', 179)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asus-prime-b650-plus.jpg" alt="ASUS Prime B650-Plus" class="product-image">
+      <h3>ASUS Prime B650-Plus</h3>
+      <p>Preis: 149€</p>
+      <button onclick="addToCart('ASUS Prime B650-Plus', 149)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="msi-b650m-mortar-wifi.jpg" alt="MSI B650M Mortar WiFi" class="product-image">
+      <h3>MSI B650M Mortar WiFi</h3>
+      <p>Preis: 169€</p>
+      <button onclick="addToCart('MSI B650M Mortar WiFi', 169)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asus-rog-strix-b550-f-gaming.jpg" alt="ASUS ROG Strix B550-F Gaming" class="product-image">
+      <h3>ASUS ROG Strix B550-F Gaming</h3>
+      <p>Preis: 159€</p>
+      <button onclick="addToCart('ASUS ROG Strix B550-F Gaming', 159)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="msi-mag-b550-tomahawk.jpg" alt="MSI MAG B550 Tomahawk" class="product-image">
+      <h3>MSI MAG B550 Tomahawk</h3>
+      <p>Preis: 139€</p>
+      <button onclick="addToCart('MSI MAG B550 Tomahawk', 139)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="gigabyte-b550-aorus-elite-v2.jpg" alt="Gigabyte B550 AORUS Elite V2" class="product-image">
+      <h3>Gigabyte B550 AORUS Elite V2</h3>
+      <p>Preis: 119€</p>
+      <button onclick="addToCart('Gigabyte B550 AORUS Elite V2', 119)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asrock-b550m-steel-legend.jpg" alt="ASRock B550M Steel Legend" class="product-image">
+      <h3>ASRock B550M Steel Legend</h3>
+      <p>Preis: 109€</p>
+      <button onclick="addToCart('ASRock B550M Steel Legend', 109)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asus-prime-b550m-a-wifi.jpg" alt="ASUS Prime B550M-A WiFi" class="product-image">
+      <h3>ASUS Prime B550M-A WiFi</h3>
+      <p>Preis: 99€</p>
+      <button onclick="addToCart('ASUS Prime B550M-A WiFi', 99)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="msi-b550m-pro-vdh-wifi.jpg" alt="MSI B550M PRO-VDH WiFi" class="product-image">
+      <h3>MSI B550M PRO-VDH WiFi</h3>
+      <p>Preis: 89€</p>
+      <button onclick="addToCart('MSI B550M PRO-VDH WiFi', 89)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="asrock-a520m-hdv.jpg" alt="ASRock A520M-HDV" class="product-image">
+      <h3>ASRock A520M-HDV</h3>
+      <p>Preis: 59€</p>
+      <button onclick="addToCart('ASRock A520M-HDV', 59)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="gigabyte-a520m-s2h.jpg" alt="Gigabyte A520M S2H" class="product-image">
+      <h3>Gigabyte A520M S2H</h3>
+      <p>Preis: 59€</p>
+      <button onclick="addToCart('Gigabyte A520M S2H', 59)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="biostar-b550mh.jpg" alt="Biostar B550MH" class="product-image">
+      <h3>Biostar B550MH</h3>
+      <p>Preis: 65€</p>
+      <button onclick="addToCart('Biostar B550MH', 65)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="msi-a520m-a-pro.jpg" alt="MSI A520M-A PRO" class="product-image">
+      <h3>MSI A520M-A PRO</h3>
+      <p>Preis: 55€</p>
+      <button onclick="addToCart('MSI A520M-A PRO', 55)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+  </section>
+
+  <script>
+    // Funktion, um Produkte zum Warenkorb hinzuzufügen
+    function addToCart(productName, price) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const product = {
+        cpuCooler: productName, // Speichere den Produktnamen als CPU-Kühler
+        price: price            // Speichere den Preis
+      };
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} wurde zum Warenkorb hinzugefügt!`);
+      updateCartCount(); // Zähler aktualisieren
+    }
+
+    // Funktion, um die Anzahl der Artikel im Warenkorb zu aktualisieren
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCountElement = document.getElementById('cart-count');
+      if (cartCountElement) {
+        cartCountElement.textContent = cart.length; // Anzahl der Artikel im Warenkorb
+      }
+    }
+
+    // Warenkorb-Anzeige aktualisieren, wenn die Seite geladen wird
+    window.onload = function () {
+      updateCartCount();
+    };
+  </script>
+
+<footer>
+  <p>&copy; 2025 HighSpeed-Sales. Alle Rechte vorbehalten.</p>
+  <a href="privacy.html">Datenschutz</a>
+  <a href="faq.html">FAQ</a>
+  <a href="terms.html">AGB</a>
+</footer>
+
+</body>
+</html>

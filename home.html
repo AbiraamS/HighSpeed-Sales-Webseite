@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt - HighSpeed-Sales</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .navbar {
+      background-color: white; /* Weißer Hintergrund */
+      color: #2e86de; /* Blaue Schrift */
+      padding: 20px;
+      display: flex;
+      justify-content: center; /* Zentriert das Logo */
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* Ermöglicht absolute Positionierung des Dropdown-Menüs */
+    }
+
+    .navbar-logo {
+      height: 97px;
+    }
+
+    .dropdown {
+  position: absolute; /* Positioniert das Dropdown-Menü unabhängig vom Logo */
+  right: 0px; /* Abstand vom rechten Rand */
+  top: 29px; /* Vertikale Zentrierung */
+  transform: translateY(-50%); /* Korrektur für vertikale Zentrierung */
+  z-index: 2;
+}
+
+.dropdown-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 2.5rem;
+  padding: 5px;
+  position: relative;
+  top: -5px;
+}
+
+.dropdown-button::before {
+  content: "☰";
+  font-size: 2.5rem;
+  color: #2e86de;
+}
+
+.dropdown-button:hover::before {
+  color: #1b4f91;
+}
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 100vw;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    z-index: 2; /* Höherer z-index */
+  }
+
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    margin: auto;
+    margin-top: -230px;
+    background-color: #000;
+    z-index: 1;
+  }
+
+.dropdown-menu li {
+  padding: 15px 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-menu li a:hover {
+  color: #2e86de;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+    .gray-section {
+      background-color: #f4f4f4; /* Grauer Hintergrund */
+      height: 50px; /* Höhe des grauen Bereichs */
+    }
+
+    .contact-info {
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #2e86de;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .social-media {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+    }
+
+    .social-links li a {
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links li a:hover {
+      transform: scale(1.1);
+    }
+
+    .map {
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .map iframe {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .slideshow-container img {
+      max-width: 100%;
+      max-height: 600px; /* Begrenzung der Höhe */
+      object-fit: contain; /* Verhindert übermäßiges Skalieren */
+      margin: auto;
+  }
+
+    footer {
+      background-color: #2e86de;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="home.html">
+      <img src="HighSpeed_Logo_weiß-blau-groeßer.png" alt="HighSpeed-Sales Logo" class="navbar-logo">
+    </a>
+    <!-- Dropdown-Menü -->
+<nav>
+  <ul class="nav-links">
+    <li class="dropdown">
+      <button class="dropdown-button"></button>
+      <ul class="dropdown-menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="configurator.html">PC-Konfigurator</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    <a href="cart.html" class="cart-icon">
+      <img src="Einkaufswagen.png" alt="Warenkorb" class="cart-icon-image">
+      <span class="cart-count" id="cart-count">0</span>
+    </a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>.</h2>
+    <p>.</p>
+  </section>
+
+  <!-- Shop Section -->
+  <section class="hero">
+    <div class="slideshow-container">
+      <div class="slide fade">
+        <img src="geforce-ada-4090-web-og-1200x630.jpg" alt="Bild 1">
+      </div>
+      <div class="slide fade">
+        <img src="pcspecialist-launches-their-gaming-pc-of-the-month-initiative_6524a0d474524.jpeg" alt="Bild 2">
+      </div>
+      <div class="slide fade">
+        <img src="pcw08_Asus-Gaming-PC.jpg.webp" alt="Bild 3">
+      </div>
+      <div class="slide fade">
+        <img src="white_gaming_PC.width-1000.format-webp.webp" alt="Bild 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- PC-Konfigurator Section -->
+<section id="configurator" class="section">
+  <h2>PC-Konfigurator</h2>
+  <p>Stellen Sie Ihren individuellen PC zusammen, der perfekt zu Ihren Bedürfnissen passt.</p>
+  <button onclick="location.href='configurator.html'">Jetzt Konfigurieren</button>
+</section>
+
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <h2>Shop</h2>
+    <p>CPUs, CPU-Kühler, Motherboards, RAM, Speicher, Grafikkarten, Energieversorgung, Cases</p>
+    <button onclick="location.href='shop.html'">Jetzt kaufen</button>
+  </section>
+
+  <!-- Kontakt Section -->
+  <section id="contact" class="section">
+    <h2>Kontakt</h2>
+    <p>Haben Sie Fragen? Kontaktieren Sie uns!</p>
+    <button onclick="location.href='contact.html'">Kontakt aufnehmen</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 HighSpeed-Sales. Alle Rechte vorbehalten.</p>
+    <a href="privacy.html">Datenschutz</a>
+    <a href="faq.html">FAQ</a>
+    <a href="terms.html">AGB</a>
+  </footer>
+
+  <!-- Verlinkung der Slideshow -->
+  <script src="slideshow.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Aktualisiere die Warenkorb-Anzeige beim Laden der Seite
+    window.onload = function () {
+      updateCartCount();
+    };
+  </script>
+</body>
+</html>
