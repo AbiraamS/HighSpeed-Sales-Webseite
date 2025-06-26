@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt - HighSpeed-Sales</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    min-height: 100vh; /* Stellt sicher, dass die Seite mindestens die Höhe des Viewports hat */
+    display: flex;
+    flex-direction: column; /* Ermöglicht flexibles Layout */
+  }
+
+    .navbar {
+      background-color: white; /* Weißer Hintergrund */
+      color: #2e86de; /* Blaue Schrift */
+      padding: 20px;
+      display: flex;
+      justify-content: center; /* Zentriert das Logo */
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* Ermöglicht absolute Positionierung des Dropdown-Menüs */
+    }
+
+    .navbar-logo {
+      height: 97px;
+    }
+
+    .dropdown {
+  position: absolute; /* Positioniert das Dropdown-Menü unabhängig vom Logo */
+  right: 0px; /* Abstand vom rechten Rand */
+  top: 29px; /* Vertikale Zentrierung */
+  transform: translateY(-50%); /* Korrektur für vertikale Zentrierung */
+}
+
+.dropdown-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 2.5rem;
+  padding: 5px;
+  position: relative;
+  top: -5px;
+}
+
+.dropdown-button::before {
+  content: "☰";
+  font-size: 2.5rem;
+  color: #2e86de;
+}
+
+.dropdown-button:hover::before {
+  color: #1b4f91;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 100vw;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px 0;
+  list-style: none;
+  margin: 0;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  padding: 15px 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-menu li a:hover {
+  color: #2e86de;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+    .gray-section {
+      background-color: #f4f4f4; /* Grauer Hintergrund */
+      height: 50px; /* Höhe des grauen Bereichs */
+    }
+
+    .contact-info {
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #2e86de;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .social-media {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+    }
+
+    .social-links li a {
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links li a:hover {
+      transform: scale(1.1);
+    }
+
+    .map {
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .map iframe {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background-color: #2e86de;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  
+  /* ...existing styles... */
+
+  .cart {
+    flex-grow: 1; /* Füllt den verfügbaren Platz aus */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .cart-table {
+    width: 100%; /* Tabelle passt sich der Breite des Containers an */
+    border-collapse: collapse; /* Entfernt doppelte Ränder */
+  }
+
+  .cart-table th, .cart-table td {
+    padding: 10px; /* Abstand innerhalb der Zellen */
+    text-align: left; /* Text linksbündig */
+    border: 2px solid #ddd; /* Rahmen für die Zellen */
+  }
+
+  .cart-total {
+    text-align: right; /* Text rechtsbündig */
+    margin-top: 20px; /* Abstand zur Tabelle */
+  }
+
+  button {
+    padding: 10px 20px; /* Abstand innerhalb des Buttons */
+    background-color: #2e86de; /* Blaue Hintergrundfarbe */
+    color: white; /* Weiße Schriftfarbe */
+    border: none; /* Kein Rahmen */
+    border-radius: 5px; /* Abgerundete Ecken */
+    cursor: pointer; /* Zeigt den Mauszeiger als Hand an */
+  }
+
+  button:hover {
+    background-color: #1b4f91; /* Dunklere Farbe beim Hover */
+  }
+</style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="home.html">
+      <img src="HighSpeed_Logo_weiß-blau-groeßer.png" alt="HighSpeed-Sales Logo" class="navbar-logo">
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <button class="dropdown-button"></button>
+          <ul class="dropdown-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="configurator.html">PC-Konfigurator</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="cart.html" class="cart-icon">
+      <img src="Einkaufswagen.png" alt="Warenkorb" class="cart-icon-image">
+      <span class="cart-count" id="cart-count">0</span>
+    </a>
+  </header>
+
+  <!-- Warenkorb -->
+  <section class="cart">
+    <h1>Ihr Warenkorb</h1>
+    <table id="cart-table" class="cart-table">
+      <thead>
+        <tr>
+          <th>CPU</th>
+          <th>CPU-Kühler</th>
+          <th>GPU</th>
+          <th>Motherboard</th>
+          <th>RAM</th>
+          <th>Speicher</th>
+          <th>Energieversorgung</th>
+          <th>Gehäuse</th>
+          <th>Betriebssystem</th>
+          <th>Preis</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <div class="cart-total">
+        <h2>Gesamtkosten: <span id="total-price">0€</span></h2>
+      </div>
+      <tbody>
+        <!-- Dynamisch generierte Inhalte -->
+      </tbody>
+    </table>
+    <button onclick="clearCart()">Warenkorb leeren</button>
+    <br> <!-- Abstand zwischen den Buttons -->
+    <button onclick="redirectToCheckout()">Kaufen</button>
+  </section>
+
+
+
+<script src="cart.js"></script>
+<script>
+  function redirectToCheckout() {
+    window.location.href = "checkout.html"; // Leitet zur Zahlungs- und Adressseite weiter
+  }
+</script>
+<script>
+  
+  // Überprüfen des Warenkorbs beim Laden der Seite
+  document.addEventListener('DOMContentLoaded', updateCheckoutButton);
+</script>
+</body>
+
+<footer>
+  <p>&copy; 2025 HighSpeed-Sales. Alle Rechte vorbehalten.</p>
+  <a href="privacy.html">Datenschutz</a>
+  <a href="faq.html">FAQ</a>
+  <a href="terms.html">AGB</a>
+</footer>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PC-Konfigurator - HighSpeed-Sales</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .navbar {
+      background-color: white;
+      color: #2e86de;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .navbar-logo {
+      height: 97px;
+    }
+
+    .dropdown {
+      position: absolute;
+      right: 0px;
+      top: 29px;
+      transform: translateY(-50%);
+    }
+
+    .dropdown-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 2.5rem;
+      padding: 5px;
+      position: relative;
+      top: -5px;
+    }
+
+    .dropdown-button::before {
+      content: "☰";
+      font-size: 2.5rem;
+      color: #2e86de;
+    }
+
+    .dropdown-button:hover::before {
+      color: #1b4f91;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      width: 100vw;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 10px 0;
+      list-style: none;
+      margin: 0;
+      z-index: 1000;
+    }
+
+    .dropdown-menu li {
+      padding: 15px 20px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu li:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dropdown-menu li a:hover {
+      color: #2e86de;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .faq-section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .faq-section h1 {
+      text-align: center;
+      color: #2e86de;
+      margin-bottom: 20px;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+    }
+
+    .faq-item h2 {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .faq-item p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    footer {
+      background-color: #2e86de;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="home.html">
+      <img src="HighSpeed_Logo_weiß-blau-groeßer.png" alt="HighSpeed-Sales Logo" class="navbar-logo">
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <button class="dropdown-button"></button>
+          <ul class="dropdown-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="configurator.html">PC-Konfigurator</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="cart.html" class="cart-icon">
+      <img src="Einkaufswagen.png" alt="Warenkorb" class="cart-icon-image">
+      <span class="cart-count" id="cart-count">0</span>
+    </a>
+  </header>
+
+  <!-- FAQ Section -->
+<section class="faq-section">
+    <h1>Häufig gestellte Fragen (FAQ)</h1>
+    <div class="faq-item">
+      <h2>Wie kann ich meinen PC konfigurieren?</h2>
+      <p>Besuchen Sie unseren <a href="configurator.html">PC-Konfigurator</a>, um Ihren individuellen PC zusammenzustellen.</p>
+    </div>
+    <div class="faq-item">
+      <h2>Welche Zahlungsmethoden werden akzeptiert?</h2>
+      <p>Wir akzeptieren Kreditkarten, PayPal und Banküberweisungen.</p>
+    </div>
+    <div class="faq-item">
+      <h2>Wie lange dauert der Versand?</h2>
+      <p>Der Versand dauert in der Regel 3-5 Werktage.</p>
+    </div>
+    <div class="faq-item">
+      <h2>Kann ich meine Bestellung stornieren?</h2>
+      <p>Ja, Sie können Ihre Bestellung innerhalb von 24 Stunden nach der Bestellung stornieren. Kontaktieren Sie uns dafür unter <a href="contact.html">Kontakt</a>.</p>
+    </div>
+    <div class="faq-item">
+      <h2>Bieten Sie Garantien für Ihre Produkte?</h2>
+      <p>Ja, alle unsere Produkte haben eine Garantie von mindestens 2 Jahren.</p>
+    </div>
+    <div class="faq-item">
+      <h2>Kann ich meine Bestellung verfolgen?</h2>
+      <p>Ja, Sie erhalten eine Tracking-Nummer, sobald Ihre Bestellung versandt wurde.</p>
+    </div>
+    <div class="faq-item">
+      <h2>Welche Betriebssysteme bieten Sie an?</h2>
+      <p>Wir bieten Windows 11 Home, Windows 11 Pro und Linux Ubuntu an.</p>
+    </div>
+    <div class="faq-item">
+      <h2>Wie kann ich den Kundenservice kontaktieren?</h2>
+      <p>Sie können uns per E-Mail unter support@highspeed-sales.de oder telefonisch unter 0123 456 789 erreichen.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 HighSpeed-Sales. Alle Rechte vorbehalten.</p>
+    <a href="privacy.html">Datenschutz</a>
+    <a href="faq.html">FAQ</a>
+    <a href="terms.html">AGB</a>
+
+    <script src="script.js"></script>
+  <script>
+    // Aktualisiere die Warenkorb-Anzeige beim Laden der Seite
+    window.onload = function () {
+      updateCartCount();
+    };
+  </script>
+
+  </footer>
+</body>
+</html>

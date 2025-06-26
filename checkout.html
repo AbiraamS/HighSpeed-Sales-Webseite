@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - HighSpeed-Sales</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .navbar {
+      background-color: white;
+      color: #2e86de;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .navbar-logo {
+      height: 97px;
+    }
+
+    .dropdown {
+      position: absolute;
+      right: 0px;
+      top: 29px;
+      transform: translateY(-50%);
+      z-index: 5;
+    }
+
+    .dropdown-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 2.5rem;
+      padding: 5px;
+    }
+
+    .dropdown-button::before {
+      content: "☰";
+      font-size: 2.5rem;
+      color: #2e86de;
+    }
+
+    .dropdown-button:hover::before {
+      color: #1b4f91;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      width: 100vw;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 10px 0;
+      list-style: none;
+      margin: 0;
+      z-index: 1000;
+    }
+
+    .dropdown-menu li {
+      padding: 15px 20px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu li:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    .dropdown-menu li a:hover {
+      color: #2e86de;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .checkout {
+  max-width: 800px;
+  margin: 30px auto; /* Zentriert die Fläche horizontal */
+  padding: 50px 50px 50px 30px; /* Fügt mehr Abstand rechts hinzu */
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Stellt sicher, dass Padding nicht die Breite beeinflusst */
+}
+
+    h2 {
+      font-size: 1.5rem;
+      color: #1f2937;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #2563eb;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+    footer {
+      background-color: #2e86de;
+      color: #f9fafb;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="home.html">
+      <img src="HighSpeed_Logo_weiß-blau-groeßer.png" alt="HighSpeed-Sales Logo" class="navbar-logo">
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <button class="dropdown-button"></button>
+          <ul class="dropdown-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="configurator.html">PC-Konfigurator</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="cart.html" class="cart-icon">
+      <img src="Einkaufswagen.png" alt="Warenkorb" class="cart-icon-image">
+      <span class="cart-count" id="cart-count">0</span>
+    </a>
+  </header>
+
+  <section class="checkout">
+    <form id="checkout-form">
+      <h2>Lieferadresse</h2>
+      <label for="first-name">Vorname:</label>
+      <input type="text" id="first-name" name="first-name" required>
+      
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="address">Adresse:</label>
+      <input type="text" id="address" name="address" required>
+    
+      <label for="city">Stadt:</label>
+      <input type="text" id="city" name="city" required>
+      
+      <label for="postal-code">Postleitzahl:</label>
+      <input type="number" id="postal-code" name="postal-code" required>
+    
+      <label for="email">E-Mail:</label>
+      <input type="email" id="email" name="email" required>
+    
+      <label for="phone">Telefonnummer:</label>
+      <input type="number" id="phone" name="phone" required>
+    
+      <!-- ...existing code... -->
+<h2>Zahlungsinformationen</h2>
+<label for="payment-method">Zahlungsmethode:</label>
+<select id="payment-method" name="payment-method" required>
+  <option value="credit-card">Kreditkarte</option>
+  <option value="paypal">PayPal</option>
+  <option value="bank-transfer">Banküberweisung</option>
+</select>
+
+<div id="credit-card-info">
+  <label for="card-number">Kreditkartennummer:</label>
+  <input type="number" id="card-number" name="card-number" required>
+  
+  <label for="expiry-date">Ablaufdatum:</label>
+  <input type="text" id="expiry-date" name="expiry-date" pattern="\d{2}/\d{2}" placeholder="MM/JJ" required>
+  
+  <label for="cvv">CVV:</label>
+  <input type="number" id="cvv" name="cvv" required>
+</div>
+
+<div id="paypal-info" style="display: none;">
+  <p>Sie werden zu PayPal weitergeleitet, um die Zahlung abzuschließen.</p>
+</div>
+
+<div id="bank-transfer-info" style="display: none;">
+  <p>Bitte überweisen Sie den Betrag an folgende Bankverbindung:</p>
+  <p><strong>IBAN:</strong> DE12345678901234567890</p>
+  <p><strong>BIC:</strong> ABCDDEFFXXX</p>
+</div>
+
+<script>
+  document.getElementById('payment-method').addEventListener('change', function () {
+    const method = this.value;
+    document.getElementById('credit-card-info').style.display = method === 'credit-card' ? 'block' : 'none';
+    document.getElementById('paypal-info').style.display = method === 'paypal' ? 'block' : 'none';
+    document.getElementById('bank-transfer-info').style.display = method === 'bank-transfer' ? 'block' : 'none';
+  });
+</script>
+
+<!-- ...existing code... -->
+<div id="bank-transfer-info" style="display: none;">
+  <p>Bitte überweisen Sie den Betrag an folgende Bankverbindung:</p>
+  <p><strong>IBAN:</strong> DE12345678901234567890</p>
+  <p><strong>BIC:</strong> ABCDDEFFXXX</p>
+</div>
+
+
+<!-- Hier den Button und das Script einfügen -->
+<button type="button" id="submit-order">Kaufen</button>
+<script>
+  document.getElementById('submit-order').addEventListener('click', function () {
+    const orderData = {
+      firstName: document.getElementById('first-name').value,
+      name: document.getElementById('name').value,
+      address: document.getElementById('address').value,
+      city: document.getElementById('city').value,
+      postalCode: document.getElementById('postal-code').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      paymentMethod: document.getElementById('payment-method').value,
+      orderNumber: Math.floor(Math.random() * 1000000) + 1 // Zufällige Bestellnummer
+    };
+
+    // Speichere die Daten im Local Storage
+    localStorage.setItem('orderData', JSON.stringify(orderData));
+
+    // Weiterleitung zur Bestellbestätigungsseite
+    window.location.href = 'order-confirmation.html';
+  });
+</script>
+
+
+</form>
+
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 HighSpeed-Sales. Alle Rechte vorbehalten.</p>
+    <a href="privacy.html">Datenschutz</a>
+    <a href="faq.html">FAQ</a>
+    <a href="terms.html">AGB</a>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Aktualisiere die Warenkorb-Anzeige beim Laden der Seite
+    window.onload = function () {
+      updateCartCount();
+    };
+  </script>
+
+</body>
+</html>

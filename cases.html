@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt - HighSpeed-Sales</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .navbar {
+      background-color: white; /* Weißer Hintergrund */
+      color: #2e86de; /* Blaue Schrift */
+      padding: 20px;
+      display: flex;
+      justify-content: center; /* Zentriert das Logo */
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* Ermöglicht absolute Positionierung des Dropdown-Menüs */
+    }
+
+    .navbar-logo {
+      height: 97px;
+    }
+
+    .dropdown {
+  position: absolute; /* Positioniert das Dropdown-Menü unabhängig vom Logo */
+  right: 0px; /* Abstand vom rechten Rand */
+  top: 29px; /* Vertikale Zentrierung */
+  transform: translateY(-50%); /* Korrektur für vertikale Zentrierung */
+}
+
+.dropdown-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 2.5rem;
+  padding: 5px;
+  position: relative;
+  top: -5px;
+}
+
+.dropdown-button::before {
+  content: "☰";
+  font-size: 2.5rem;
+  color: #2e86de;
+}
+
+.dropdown-button:hover::before {
+  color: #1b4f91;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 100vw;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px 0;
+  list-style: none;
+  margin: 0;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  padding: 15px 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-menu li a:hover {
+  color: #2e86de;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+    .gray-section {
+      background-color: #f4f4f4; /* Grauer Hintergrund */
+      height: 50px; /* Höhe des grauen Bereichs */
+    }
+
+    .contact-info {
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #2e86de;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .social-media {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+    }
+
+    .social-links li a {
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links li a:hover {
+      transform: scale(1.1);
+    }
+
+    .map {
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .map iframe {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background-color: #2e86de;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    /* Zusätzliche CSS für die Produktdarstellung */
+    .products {
+  display: flex;
+  flex-wrap: wrap; /* Karten umbrechen, wenn der Platz nicht ausreicht */
+  gap: 30px; /* Abstand zwischen den Karten erhöhen */
+  justify-content: center; /* Karten zentrieren */
+  padding: 20px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 280px; /* Breite der Produktkarte angepasst */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Inhalte gleichmäßig verteilen */
+}
+
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.product-card p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.product-card button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.product-card button:hover {
+  background-color: #0056b3;
+}
+
+.product-card img {
+  width: 280px; /* Einheitliche Breite */
+  height: 300px; /* Einheitliche Höhe */
+  object-fit: cover; /* Bild wird zugeschnitten, um die Größe zu erfüllen */
+  margin: 0 auto 15px; /* Zentriert das Bild horizontal und fügt unten einen Abstand hinzu */
+  display: block; /* Stellt sicher, dass das Bild als Blockelement behandelt wird */
+}
+
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="home.html">
+      <img src="HighSpeed_Logo_weiß-blau-groeßer.png" alt="HighSpeed-Sales Logo" class="navbar-logo">
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <button class="dropdown-button"></button>
+          <ul class="dropdown-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="configurator.html">PC-Konfigurator</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="cart.html" class="cart-icon">
+      <img src="Einkaufswagen.png" alt="Warenkorb" class="cart-icon-image">
+      <span class="cart-count" id="cart-count">0</span>
+    </a>
+  </header>
+
+  <section class="products">
+    <div class="product-card">
+      <img src="nzxt-h510.jpg" alt="NZXT H510 Mid-Tower" class="product-image">
+      <h3>NZXT H510 Mid-Tower</h3>
+      <p>Preis: 79€</p>
+      <button onclick="addToCart('NZXT H510 Mid-Tower', 79)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="corsair-4000d-airflow.jpg" alt="Corsair 4000D Airflow" class="product-image">
+      <h3>Corsair 4000D Airflow</h3>
+      <p>Preis: 89€</p>
+      <button onclick="addToCart('Corsair 4000D Airflow', 89)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="fractal-meshify-c.jpg" alt="Fractal Design Meshify C" class="product-image">
+      <h3>Fractal Design Meshify C</h3>
+      <p>Preis: 99€</p>
+      <button onclick="addToCart('Fractal Design Meshify C', 99)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="phanteks-eclipse-p400a.jpg" alt="Phanteks Eclipse P400A" class="product-image">
+      <h3>Phanteks Eclipse P400A</h3>
+      <p>Preis: 85€</p>
+      <button onclick="addToCart('Phanteks Eclipse P400A', 85)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="bequiet-pure-base-500dx.jpg" alt="be quiet! Pure Base 500DX" class="product-image">
+      <h3>be quiet! Pure Base 500DX</h3>
+      <p>Preis: 99€</p>
+      <button onclick="addToCart('be quiet! Pure Base 500DX', 99)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="lian-li-lancool-ii-mesh.jpg" alt="Lian Li Lancool II Mesh" class="product-image">
+      <h3>Lian Li Lancool II Mesh</h3>
+      <p>Preis: 95€</p>
+      <button onclick="addToCart('Lian Li Lancool II Mesh', 95)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="cooler-master-nr600.jpg" alt="Cooler Master NR600" class="product-image">
+      <h3>Cooler Master NR600</h3>
+      <p>Preis: 75€</p>
+      <button onclick="addToCart('Cooler Master NR600', 75)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="thermaltake-v200-rgb.jpg" alt="Thermaltake V200 RGB" class="product-image">
+      <h3>Thermaltake V200 RGB</h3>
+      <p>Preis: 69€</p>
+      <button onclick="addToCart('Thermaltake V200 RGB', 69)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="msi-mag-forge-100r.jpg" alt="MSI MAG Forge 100R" class="product-image">
+      <h3>MSI MAG Forge 100R</h3>
+      <p>Preis: 72€</p>
+      <button onclick="addToCart('MSI MAG Forge 100R', 72)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="aerocool-tower-x3.jpg" alt="Aerocool Tower X3" class="product-image">
+      <h3>Aerocool Tower X3</h3>
+      <p>Preis: 49€</p>
+      <button onclick="addToCart('Aerocool Tower X3', 49)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="corsair-5000d-airflow.jpg" alt="Corsair 5000D Airflow" class="product-image">
+      <h3>Corsair 5000D Airflow</h3>
+      <p>Preis: 139€</p>
+      <button onclick="addToCart('Corsair 5000D Airflow', 139)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="fractal-define-7.jpg" alt="Fractal Design Define 7" class="product-image">
+      <h3>Fractal Design Define 7</h3>
+      <p>Preis: 169€</p>
+      <button onclick="addToCart('Fractal Design Define 7', 169)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="nzxt-h7-flow.jpg" alt="NZXT H7 Flow" class="product-image">
+      <h3>NZXT H7 Flow</h3>
+      <p>Preis: 129€</p>
+      <button onclick="addToCart('NZXT H7 Flow', 129)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="phanteks-enthoo-pro.jpg" alt="Phanteks Enthoo Pro" class="product-image">
+      <h3>Phanteks Enthoo Pro</h3>
+      <p>Preis: 119€</p>
+      <button onclick="addToCart('Phanteks Enthoo Pro', 119)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="bequiet-silent-base-802.jpg" alt="be quiet! Silent Base 802" class="product-image">
+      <h3>be quiet! Silent Base 802</h3>
+      <p>Preis: 159€</p>
+      <button onclick="addToCart('be quiet! Silent Base 802', 159)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="lian-li-o11-dynamic.jpg" alt="Lian Li O11 Dynamic" class="product-image">
+      <h3>Lian Li O11 Dynamic</h3>
+      <p>Preis: 135€</p>
+      <button onclick="addToCart('Lian Li O11 Dynamic', 135)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="cooler-master-haf-700.jpg" alt="Cooler Master HAF 700" class="product-image">
+      <h3>Cooler Master HAF 700</h3>
+      <p>Preis: 249€</p>
+      <button onclick="addToCart('Cooler Master HAF 700', 249)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="thermaltake-core-p3.jpg" alt="Thermaltake Core P3 TG" class="product-image">
+      <h3>Thermaltake Core P3 TG</h3>
+      <p>Preis: 129€</p>
+      <button onclick="addToCart('Thermaltake Core P3 TG', 129)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="inwin-303.jpg" alt="InWin 303" class="product-image">
+      <h3>InWin 303</h3>
+      <p>Preis: 99€</p>
+      <button onclick="addToCart('InWin 303', 99)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="deepcool-macube-110.jpg" alt="DeepCool MACUBE 110" class="product-image">
+      <h3>DeepCool MACUBE 110</h3>
+      <p>Preis: 59€</p>
+      <button onclick="addToCart('DeepCool MACUBE 110', 59)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="fractal-pop-air.jpg" alt="Fractal Design Pop Air" class="product-image">
+      <h3>Fractal Design Pop Air</h3>
+      <p>Preis: 79€</p>
+      <button onclick="addToCart('Fractal Design Pop Air', 79)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="nzxt-h210.jpg" alt="NZXT H210 Mini-ITX" class="product-image">
+      <h3>NZXT H210 Mini-ITX</h3>
+      <p>Preis: 89€</p>
+      <button onclick="addToCart('NZXT H210 Mini-ITX', 89)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="cooler-master-q300l.jpg" alt="Cooler Master MasterBox Q300L" class="product-image">
+      <h3>Cooler Master MasterBox Q300L</h3>
+      <p>Preis: 49€</p>
+      <button onclick="addToCart('Cooler Master MasterBox Q300L', 49)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="silverstone-fara-r1.jpg" alt="SilverStone FARA R1" class="product-image">
+      <h3>SilverStone FARA R1</h3>
+      <p>Preis: 55€</p>
+      <button onclick="addToCart('SilverStone FARA R1', 55)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="corsair-icue-5000t-rgb.jpg" alt="Corsair iCUE 5000T RGB" class="product-image">
+      <h3>Corsair iCUE 5000T RGB</h3>
+      <p>Preis: 329€</p>
+      <button onclick="addToCart('Corsair iCUE 5000T RGB', 329)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="lian-li-o11-dynamic-evo.jpg" alt="Lian Li O11 Dynamic EVO" class="product-image">
+      <h3>Lian Li O11 Dynamic EVO</h3>
+      <p>Preis: 169€</p>
+      <button onclick="addToCart('Lian Li O11 Dynamic EVO', 169)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="asus-rog-strix-helio.jpg" alt="ASUS ROG Strix Helios" class="product-image">
+      <h3>ASUS ROG Strix Helios</h3>
+      <p>Preis: 289€</p>
+      <button onclick="addToCart('ASUS ROG Strix Helios', 289)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="montech-air-100-argb.jpg" alt="Montech Air 100 ARGB" class="product-image">
+      <h3>Montech Air 100 ARGB</h3>
+      <p>Preis: 59€</p>
+      <button onclick="addToCart('Montech Air 100 ARGB', 59)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="zalman-s3-rgb.jpg" alt="Zalman S3 RGB" class="product-image">
+      <h3>Zalman S3 RGB</h3>
+      <p>Preis: 45€</p>
+      <button onclick="addToCart('Zalman S3 RGB', 45)">Zum Warenkorb hinzufügen</button>
+    </div>
+    <div class="product-card">
+      <img src="darkflash-dlx21.jpg" alt="DarkFlash DLX21 Mesh" class="product-image">
+      <h3>DarkFlash DLX21 Mesh</h3>
+      <p>Preis: 65€</p>
+      <button onclick="addToCart('DarkFlash DLX21 Mesh', 65)">Zum Warenkorb hinzufügen</button>
+    </div>
+    
+  </section>
+
+  <script>
+    // Funktion, um Produkte zum Warenkorb hinzuzufügen
+    function addToCart(productName, price) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const product = {
+        cpuCooler: productName, // Speichere den Produktnamen als CPU-Kühler
+        price: price            // Speichere den Preis
+      };
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} wurde zum Warenkorb hinzugefügt!`);
+      updateCartCount(); // Zähler aktualisieren
+    }
+
+    // Funktion, um die Anzahl der Artikel im Warenkorb zu aktualisieren
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCountElement = document.getElementById('cart-count');
+      if (cartCountElement) {
+        cartCountElement.textContent = cart.length; // Anzahl der Artikel im Warenkorb
+      }
+    }
+
+    // Warenkorb-Anzeige aktualisieren, wenn die Seite geladen wird
+    window.onload = function () {
+      updateCartCount();
+    };
+  </script>
+
+<footer>
+  <p>&copy; 2025 HighSpeed-Sales. Alle Rechte vorbehalten.</p>
+  <a href="privacy.html">Datenschutz</a>
+  <a href="faq.html">FAQ</a>
+  <a href="terms.html">AGB</a>
+</footer>
+
+</body>
+</html>

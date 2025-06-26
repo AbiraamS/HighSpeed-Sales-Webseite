@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PC-Konfigurator - HighSpeed-Sales</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .navbar {
+      background-color: white;
+      color: #2e86de;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .navbar-logo {
+      height: 97px;
+    }
+
+    .dropdown {
+      position: absolute;
+      right: 0px;
+      top: 29px;
+      transform: translateY(-50%);
+    }
+
+    .dropdown-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 2.5rem;
+      padding: 5px;
+      position: relative;
+      top: -5px;
+    }
+
+    .dropdown-button::before {
+      content: "☰";
+      font-size: 2.5rem;
+      color: #2e86de;
+    }
+
+    .dropdown-button:hover::before {
+      color: #1b4f91;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      width: 100vw;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 10px 0;
+      list-style: none;
+      margin: 0;
+      z-index: 1000;
+    }
+
+    .dropdown-menu li {
+      padding: 15px 20px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu li:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dropdown-menu li a:hover {
+      color: #2e86de;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .configurator {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .configurator h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .configurator-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .configurator-table th, .configurator-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .configurator-table th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+    }
+
+    .configurator-table td select {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .configurator-summary {
+      margin-top: 20px;
+      text-align: right;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .configurator button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2e86de;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .configurator button:hover {
+      background-color: #1b4f91;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="home.html">
+      <img src="HighSpeed_Logo_weiß-blau-groeßer.png" alt="HighSpeed-Sales Logo" class="navbar-logo">
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <button class="dropdown-button"></button>
+          <ul class="dropdown-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="configurator.html">PC-Konfigurator</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="cart.html" class="cart-icon">
+      <img src="Einkaufswagen.png" alt="Warenkorb" class="cart-icon-image">
+      <span class="cart-count" id="cart-count">0</span>
+    </a>
+  </header>
+
+  <!-- PC-Konfigurator -->
+  <section class="configurator">
+    <h1>PC-Konfigurator</h1>
+    <table class="configurator-table">
+      <thead>
+        <tr>
+          <th>Komponente</th>
+          <th>Optionen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CPU</td>
+          <td>
+            <select id="cpu" name="cpu">
+              <option value="-" data-price="0">-</option>
+              <option value="intel-i9-14900K" data-price="649">Intel Core i9-14900K - 649€</option>
+              <option value="intel-i9-13900K" data-price="599">Intel Core i9-13900K - 599€</option>
+              <option value="intel-i9-12900K" data-price="489">Intel Core i9-12900K - 489€</option>
+              <option value="intel-i7-14700K" data-price="449">Intel Core i7-14700K - 449€</option>
+              <option value="intel-i7-13700K" data-price="419">Intel Core i7-13700K - 419€</option>
+              <option value="intel-i7-12700K" data-price="379">Intel Core i7-12700K - 379€</option>
+              <option value="intel-i5-14600K" data-price="319">Intel Core i5-14600K - 319€</option>
+              <option value="intel-i5-13600K" data-price="299">Intel Core i5-13600K - 299€</option>
+              <option value="intel-i5-12600K" data-price="279">Intel Core i5-12600K - 279€</option>
+              <option value="intel-i3-14100F" data-price="119">Intel Core i3-14100F - 119€</option>
+              <option value="intel-i3-12100F" data-price="99">Intel Core i3-12100F - 99€</option>
+              <option value="intel-i3-10105F" data-price="69">Intel Core i3-10105F - 69€</option>
+              <option value="amd-ryzen-9-7950X3D" data-price="639">AMD Ryzen 9 7950X3D - 639€</option>
+              <option value="amd-ryzen-9-7900X" data-price="479">AMD Ryzen 9 7900X - 479€</option>
+              <option value="amd-ryzen-9-5900X" data-price="369">AMD Ryzen 9 5900X - 369€</option>
+              <option value="amd-ryzen-7-7800X3D" data-price="399">AMD Ryzen 7 7800X3D - 399€</option>
+              <option value="amd-ryzen-7-7700X" data-price="339">AMD Ryzen 7 7700X - 339€</option>
+              <option value="amd-ryzen-7-5800X" data-price="259">AMD Ryzen 7 5800X - 259€</option>
+              <option value="amd-ryzen-5-7600X" data-price="249">AMD Ryzen 5 7600X - 249€</option>
+              <option value="amd-ryzen-5-5600X" data-price="179">AMD Ryzen 5 5600X - 179€</option>
+              <option value="amd-ryzen-5-5500" data-price="129">AMD Ryzen 5 5500 - 129€</option>
+              <option value="amd-ryzen-3-5300G" data-price="89">AMD Ryzen 3 5300G - 89€</option>
+              <option value="amd-ryzen-3-4100" data-price="79">AMD Ryzen 3 4100 - 79€</option>
+              <option value="intel-xeon-w7-2495X" data-price="2999">Intel Xeon W7-2495X - 2999€</option>
+              <option value="intel-xeon-e-2388G" data-price="649">Intel Xeon E-2388G - 649€</option>
+              <option value="amd-threadripper-7980X" data-price="4999">AMD Threadripper 7980X - 4999€</option>
+              <option value="amd-threadripper-pro-7995WX" data-price="6999">AMD Threadripper PRO 7995WX - 6999€</option>
+              <option value="intel-i9-11900K" data-price="379">Intel Core i9-11900K - 379€</option>
+              <option value="intel-i9-10900K" data-price="349">Intel Core i9-10900K - 349€</option>
+              <option value="amd-ryzen-9-3950X" data-price="309">AMD Ryzen 9 3950X - 309€</option>
+              
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>CPU-Kühler</td>
+          <td>
+            <select id="cpu-cooler" name="cpu-cooler">
+              <option value="-" data-price="0">-</option>
+              <option value="noctua-nh-d15" data-price="99">Noctua NH-D15 - 99€</option>
+              <option value="bequiet-dark-rock-pro-4" data-price="85">be quiet! Dark Rock Pro 4 - 85€</option>
+              <option value="cooler-master-hyper-212-black" data-price="39">Cooler Master Hyper 212 Black - 39€</option>
+              <option value="deepcool-ak620" data-price="64">DeepCool AK620 - 64€</option>
+              <option value="arctic-freezer-34-esports-duo" data-price="45">ARCTIC Freezer 34 eSports DUO - 45€</option>
+              <option value="scythe-mugen-5-rev-c" data-price="55">Scythe Mugen 5 Rev. C - 55€</option>
+              <option value="thermalright-peerless-assassin-120" data-price="44">Thermalright Peerless Assassin 120 - 44€</option>
+              <option value="noctua-nh-u12s" data-price="64">Noctua NH-U12S - 64€</option>
+              <option value="bequiet-pure-rock-2" data-price="38">be quiet! Pure Rock 2 - 38€</option>
+              <option value="cooler-master-masterair-ma624-stealth" data-price="89">Cooler Master MasterAir MA624 Stealth - 89€</option>
+              <option value="nzxt-kraken-x73" data-price="169">NZXT Kraken X73 - 169€</option>
+              <option value="corsair-h150i-elite-capellix" data-price="189">Corsair H150i Elite Capellix - 189€</option>
+              <option value="cooler-master-ml360-illustrious" data-price="149">Cooler Master ML360 Illustrious - 149€</option>
+              <option value="arctic-liquid-freezer-ii-360" data-price="119">ARCTIC Liquid Freezer II 360 - 119€</option>
+              <option value="bequiet-silent-loop-2-360mm" data-price="139">be quiet! Silent Loop 2 360mm - 139€</option>
+              <option value="deepcool-levante-360" data-price="109">DeepCool LEVANTE 360 - 109€</option>
+              <option value="lian-li-galahad-360-rgb" data-price="139">Lian Li Galahad 360 RGB - 139€</option>
+              <option value="ek-nucleus-aio-lux-d-rgb-360" data-price="169">EK Nucleus AIO Lux D-RGB 360 - 169€</option>
+              <option value="asus-rog-ryujin-ii-360" data-price="279">ASUS ROG Ryujin II 360 - 279€</option>
+              <option value="msi-mag-coreliquid-360r" data-price="125">MSI MAG CoreLiquid 360R - 125€</option>
+              <option value="id-cooling-zoomflow-360-xt" data-price="99">ID-Cooling Zoomflow 360 XT - 99€</option>
+              <option value="corsair-h100i-elite-lcd" data-price="199">Corsair H100i Elite LCD - 199€</option>
+              <option value="thermalright-frost-commander-140" data-price="55">Thermalright Frost Commander 140 - 55€</option>
+              <option value="zalman-cnps10x-performa" data-price="42">Zalman CNPS10X Performa - 42€</option>
+              <option value="enermax-liqmax-iii-360-argb" data-price="109">Enermax Liqmax III 360 ARGB - 109€</option>
+              <option value="silverstone-icegem-360" data-price="115">SilverStone IceGem 360 - 115€</option>
+              <option value="fractal-lumen-s36-rgb" data-price="119">Fractal Lumen S36 RGB - 119€</option>
+              <option value="gigabyte-aorus-waterforce-x-360" data-price="229">Gigabyte AORUS Waterforce X 360 - 229€</option>
+              <option value="cougar-helor-360" data-price="89">Cougar Helor 360 - 89€</option>
+              <option value="alphacool-eisbaer-aurora-360" data-price="179">Alphacool Eisbaer Aurora 360 - 179€</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Grafikkarte</td>
+          <td>
+            <select id="gpu" name="gpu">
+              <option value="-" data-price="0">-</option>
+              <option value="nvidia-rtx-4090" data-price="1999">NVIDIA RTX 4090 - 1999€</option>
+              <option value="nvidia-rtx-4080-super" data-price="1399">NVIDIA RTX 4080 SUPER - 1399€</option>
+              <option value="nvidia-rtx-4080" data-price="1299">NVIDIA RTX 4080 - 1299€</option>
+              <option value="nvidia-rtx-4070-ti-super" data-price="899">NVIDIA RTX 4070 Ti SUPER - 899€</option>
+              <option value="nvidia-rtx-4070-super" data-price="729">NVIDIA RTX 4070 SUPER - 729€</option>
+              <option value="nvidia-rtx-4070" data-price="649">NVIDIA RTX 4070 - 649€</option>
+              <option value="nvidia-rtx-4060-ti" data-price="439">NVIDIA RTX 4060 Ti - 439€</option>
+              <option value="nvidia-rtx-4060" data-price="329">NVIDIA RTX 4060 - 329€</option>
+              <option value="nvidia-rtx-3080-ti" data-price="899">NVIDIA RTX 3080 Ti - 899€</option>
+              <option value="nvidia-rtx-3080" data-price="749">NVIDIA RTX 3080 - 749€</option>
+              <option value="nvidia-rtx-3070-ti" data-price="599">NVIDIA RTX 3070 Ti - 599€</option>
+              <option value="nvidia-rtx-3070" data-price="519">NVIDIA RTX 3070 - 519€</option>
+              <option value="nvidia-rtx-3060-ti" data-price="429">NVIDIA RTX 3060 Ti - 429€</option>
+              <option value="nvidia-rtx-3060" data-price="349">NVIDIA RTX 3060 - 349€</option>
+              <option value="nvidia-rtx-3050" data-price="249">NVIDIA RTX 3050 - 249€</option>
+              <option value="amd-rx-7900xtx" data-price="949">AMD Radeon RX 7900 XTX - 949€</option>
+              <option value="amd-rx-7900xt" data-price="799">AMD Radeon RX 7900 XT - 799€</option>
+              <option value="amd-rx-7800xt" data-price="599">AMD Radeon RX 7800 XT - 599€</option>
+              <option value="amd-rx-7700xt" data-price="489">AMD Radeon RX 7700 XT - 489€</option>
+              <option value="amd-rx-7600xt" data-price="349">AMD Radeon RX 7600 XT - 349€</option>
+              <option value="amd-rx-7600" data-price="299">AMD Radeon RX 7600 - 299€</option>
+              <option value="amd-rx-6750xt" data-price="449">AMD Radeon RX 6750 XT - 449€</option>
+              <option value="amd-rx-6700xt" data-price="399">AMD Radeon RX 6700 XT - 399€</option>
+              <option value="amd-rx-6650xt" data-price="299">AMD Radeon RX 6650 XT - 299€</option>
+              <option value="amd-rx-6600xt" data-price="249">AMD Radeon RX 6600 XT - 249€</option>
+              <option value="amd-rx-6600" data-price="219">AMD Radeon RX 6600 - 219€</option>
+              <option value="intel-arc-a770" data-price="329">Intel Arc A770 - 329€</option>
+              <option value="intel-arc-a750" data-price="259">Intel Arc A750 - 259€</option>
+              <option value="nvidia-gtx-1660-super" data-price="189">NVIDIA GTX 1660 SUPER - 189€</option>
+              <option value="amd-rx-6500xt" data-price="159">AMD Radeon RX 6500 XT - 159€</option>
+              </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Motherboard</td>
+          <td>
+            <select id="motherboard" name="motherboard">
+              <option value="-" data-price="0">-</option>
+              <option value="asus-rog-maximus-z790-hero" data-price="599">ASUS ROG Maximus Z790 Hero - 599€</option>
+              <option value="msi-meg-z790-ace" data-price="579">MSI MEG Z790 ACE - 579€</option>
+              <option value="gigabyte-z790-aorus-master" data-price="469">Gigabyte Z790 AORUS Master - 469€</option>
+              <option value="asus-tuf-gaming-z790-plus-wifi" data-price="269">ASUS TUF Gaming Z790-Plus WiFi - 269€</option>
+              <option value="msi-pro-z790-p-wifi" data-price="209">MSI PRO Z790-P WiFi - 209€</option>
+              <option value="asrock-z790-steel-legend-wifi" data-price="229">ASRock Z790 Steel Legend WiFi - 229€</option>
+              <option value="gigabyte-b760-aorus-elite-ax" data-price="159">Gigabyte B760 AORUS Elite AX - 159€</option>
+              <option value="asus-prime-b760m-a-wifi" data-price="139">ASUS Prime B760M-A WiFi - 139€</option>
+              <option value="msi-b760-tomahawk-wifi" data-price="169">MSI B760 Tomahawk WiFi - 169€</option>
+              <option value="asrock-b760m-pro-rs" data-price="119">ASRock B760M Pro RS - 119€</option>
+              <option value="asus-rog-crosshair-x670e-hero" data-price="599">ASUS ROG Crosshair X670E Hero - 599€</option>
+              <option value="msi-meg-x670e-ace" data-price="549">MSI MEG X670E ACE - 549€</option>
+              <option value="gigabyte-x670e-aorus-master" data-price="429">Gigabyte X670E AORUS Master - 429€</option>
+              <option value="asrock-x670e-taichi" data-price="479">ASRock X670E Taichi - 479€</option>
+              <option value="asus-tuf-gaming-x670e-plus-wifi" data-price="289">ASUS TUF Gaming X670E-Plus WiFi - 289€</option>
+              <option value="msi-pro-x670-p-wifi" data-price="229">MSI PRO X670-P WiFi - 229€</option>
+              <option value="gigabyte-b650-aorus-elite-ax" data-price="179">Gigabyte B650 AORUS Elite AX - 179€</option>
+              <option value="asus-prime-b650-plus" data-price="149">ASUS Prime B650-Plus - 149€</option>
+              <option value="msi-b650m-mortar-wifi" data-price="169">MSI B650M Mortar WiFi - 169€</option>
+              <option value="asus-rog-strix-b550-f-gaming" data-price="159">ASUS ROG Strix B550-F Gaming - 159€</option>
+              <option value="msi-mag-b550-tomahawk" data-price="139">MSI MAG B550 Tomahawk - 139€</option>
+              <option value="gigabyte-b550-aorus-elite-v2" data-price="119">Gigabyte B550 AORUS Elite V2 - 119€</option>
+              <option value="asrock-b550m-steel-legend" data-price="109">ASRock B550M Steel Legend - 109€</option>
+              <option value="asus-prime-b550m-a-wifi" data-price="99">ASUS Prime B550M-A WiFi - 99€</option>
+              <option value="msi-b550m-pro-vdh-wifi" data-price="89">MSI B550M PRO-VDH WiFi - 89€</option>
+              <option value="asrock-a520m-hdv" data-price="59">ASRock A520M-HDV - 59€</option>
+              <option value="gigabyte-a520m-s2h" data-price="59">Gigabyte A520M S2H - 59€</option>
+              <option value="biostar-b550mh" data-price="65">Biostar B550MH - 65€</option>
+              <option value="msi-a520m-a-pro" data-price="55">MSI A520M-A PRO - 55€</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>RAM</td>
+          <td>
+            <select id="ram" name="ram">
+              <option value="-" data-price="0">-</option>
+              <option value="corsair-vengeance-ddr5-64gb-6000" data-price="229">Corsair Vengeance DDR5 64GB (2x32) 6000MHz - 229€</option>
+              <option value="gskill-trident-z5-64gb-6400" data-price="249">G.Skill Trident Z5 RGB DDR5 64GB (2x32) 6400MHz - 249€</option>
+              <option value="kingston-fury-beast-ddr5-64gb-6000" data-price="219">Kingston Fury Beast DDR5 64GB (2x32) 6000MHz - 219€</option>
+              <option value="corsair-dominator-platinum-64gb-6600" data-price="289">Corsair Dominator Platinum DDR5 64GB (2x32) 6600MHz - 289€</option>
+              <option value="teamgroup-delta-rgb-64gb-6000" data-price="209">TeamGroup T-Force Delta RGB DDR5 64GB (2x32) 6000MHz - 209€</option>
+              <option value="gskill-ripjaws-s5-32gb-6000" data-price="139">G.Skill Ripjaws S5 DDR5 32GB (2x16) 6000MHz - 139€</option>
+              <option value="corsair-vengeance-ddr5-32gb-5600" data-price="119">Corsair Vengeance DDR5 32GB (2x16) 5600MHz - 119€</option>
+              <option value="kingston-fury-renegade-32gb-6400" data-price="149">Kingston Fury Renegade DDR5 32GB (2x16) 6400MHz - 149€</option>
+              <option value="patriot-viper-venom-32gb-6000" data-price="129">Patriot Viper Venom DDR5 32GB (2x16) 6000MHz - 129€</option>
+              <option value="crucial-pro-ddr5-32gb-5600" data-price="109">Crucial Pro DDR5 32GB (2x16) 5600MHz - 109€</option>
+              <option value="gskill-trident-z-rgb-32gb-3600" data-price="99">G.Skill Trident Z RGB DDR4 32GB (2x16) 3600MHz - 99€</option>
+              <option value="corsair-vengeance-rgb-pro-32gb-3600" data-price="95">Corsair Vengeance RGB Pro DDR4 32GB (2x16) 3600MHz - 95€</option>
+              <option value="kingston-hyperx-fury-32gb-3200" data-price="89">Kingston HyperX Fury DDR4 32GB (2x16) 3200MHz - 89€</option>
+              <option value="patriot-viper-steel-32gb-3600" data-price="92">Patriot Viper Steel DDR4 32GB (2x16) 3600MHz - 92€</option>
+              <option value="crucial-ballistix-32gb-3200" data-price="85">Crucial Ballistix DDR4 32GB (2x16) 3200MHz - 85€</option>
+              <option value="corsair-vengeance-lpx-16gb-3200" data-price="55">Corsair Vengeance LPX DDR4 16GB (2x8) 3200MHz - 55€</option>
+              <option value="gskill-aegis-16gb-3000" data-price="52">G.Skill Aegis DDR4 16GB (2x8) 3000MHz - 52€</option>
+              <option value="kingston-fury-beast-16gb-3200" data-price="54">Kingston Fury Beast DDR4 16GB (2x8) 3200MHz - 54€</option>
+              <option value="crucial-ddr4-16gb-2666" data-price="48">Crucial DDR4 16GB (2x8) 2666MHz - 48€</option>
+              <option value="patriot-signature-16gb-3200" data-price="49">Patriot Signature DDR4 16GB (2x8) 3200MHz - 49€</option>
+              <option value="kingston-fury-impact-16gb-5600-sodimm" data-price="79">Kingston Fury Impact DDR5 16GB 5600MHz (SO-DIMM) - 79€</option>
+              <option value="corsair-vengeance-sodimm-16gb-4800" data-price="69">Corsair Vengeance DDR5 16GB 4800MHz (SO-DIMM) - 69€</option>
+              <option value="crucial-sodimm-ddr4-16gb-3200" data-price="45">Crucial DDR4 SO-DIMM 16GB 3200MHz - 45€</option>
+              <option value="teamgroup-elite-ddr5-32gb-5600" data-price="109">TeamGroup Elite DDR5 32GB (2x16) 5600MHz - 109€</option>
+              <option value="lexar-ares-ddr5-32gb-6000" data-price="125">Lexar ARES DDR5 32GB (2x16) 6000MHz - 125€</option>
+              <option value="adata-xpg-lancer-rgb-32gb-6000" data-price="129">ADATA XPG Lancer RGB DDR5 32GB (2x16) 6000MHz - 129€</option>
+              <option value="silicon-power-ddr4-32gb-3200" data-price="79">Silicon Power DDR4 32GB (2x16) 3200MHz - 79€</option>
+              <option value="thermaltake-toughram-rgb-32gb-3600" data-price="109">Thermaltake ToughRAM RGB DDR4 32GB (2x16) 3600MHz - 109€</option>
+              <option value="geil-evo-v-rgb-32gb-6000" data-price="119">GeIL EVO V RGB DDR5 32GB (2x16) 6000MHz - 119€</option>
+              <option value="kingston-fury-renegade-64gb-6400" data-price="259">Kingston Fury Renegade DDR5 64GB (2x32) 6400MHz - 259€</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Speicher</td>
+          <td>
+            <select id="storage" name="storage">
+              <option value="-" data-price="0">-</option>
+              <option value="samsung-980-pro-2tb" data-price="169">Samsung 980 PRO 2TB NVMe SSD - 169€</option>
+              <option value="crucial-p5-plus-2tb" data-price="139">Crucial P5 Plus 2TB NVMe SSD - 139€</option>
+              <option value="wd-black-sn850x-2tb" data-price="149">WD Black SN850X 2TB NVMe SSD - 149€</option>
+              <option value="kingston-kc3000-2tb" data-price="139">Kingston KC3000 2TB NVMe SSD - 139€</option>
+              <option value="sabrent-rocket-4-plus-2tb" data-price="145">Sabrent Rocket 4 Plus 2TB NVMe SSD - 145€</option>
+              <option value="samsung-970-evo-plus-1tb" data-price="89">Samsung 970 EVO Plus 1TB NVMe SSD - 89€</option>
+              <option value="crucial-p3-1tb" data-price="69">Crucial P3 1TB NVMe SSD - 69€</option>
+              <option value="wd-blue-sn570-1tb" data-price="64">WD Blue SN570 1TB NVMe SSD - 64€</option>
+              <option value="kingston-nv2-1tb" data-price="59">Kingston NV2 1TB NVMe SSD - 59€</option>
+              <option value="teamgroup-mp33-1tb" data-price="59">TeamGroup MP33 1TB NVMe SSD - 59€</option>
+              <option value="samsung-870-evo-2tb" data-price="109">Samsung 870 EVO 2TB SATA SSD - 109€</option>
+              <option value="crucial-mx500-2tb" data-price="99">Crucial MX500 2TB SATA SSD - 99€</option>
+              <option value="kingston-a400-1tb" data-price="54">Kingston A400 1TB SATA SSD - 54€</option>
+              <option value="sandisk-ultra-3d-1tb" data-price="69">SanDisk Ultra 3D 1TB SATA SSD - 69€</option>
+              <option value="wd-blue-3d-nand-1tb" data-price="65">WD Blue 3D NAND 1TB SATA SSD - 65€</option>
+              <option value="samsung-990-pro-2tb" data-price="189">Samsung 990 PRO 2TB NVMe SSD - 189€</option>
+              <option value="sabrent-rocket-5-1tb" data-price="129">Sabrent Rocket 5 1TB NVMe Gen5 SSD - 129€</option>
+              <option value="adata-legend-960-2tb" data-price="125">ADATA Legend 960 2TB NVMe SSD - 125€</option>
+              <option value="corsair-mp600-2tb" data-price="135">Corsair MP600 2TB Gen4 NVMe SSD - 135€</option>
+              <option value="patriot-viper-vp4300-2tb" data-price="139">Patriot Viper VP4300 2TB NVMe SSD - 139€</option>
+              <option value="seagate-barracuda-4tb" data-price="89">Seagate Barracuda 4TB HDD - 89€</option>
+              <option value="wd-blue-4tb" data-price="85">Western Digital Blue 4TB HDD - 85€</option>
+              <option value="toshiba-p300-4tb" data-price="79">Toshiba P300 4TB HDD - 79€</option>
+              <option value="seagate-ironwolf-6tb" data-price="129">Seagate IronWolf 6TB NAS HDD - 129€</option>
+              <option value="wd-red-plus-6tb" data-price="135">WD Red Plus 6TB NAS HDD - 135€</option>
+              <option value="seagate-exos-8tb" data-price="149">Seagate Exos 8TB Enterprise HDD - 149€</option>
+              <option value="wd-elements-8tb" data-price="159">WD Elements 8TB Desktop HDD - 159€</option>
+              <option value="toshiba-n300-6tb" data-price="139">Toshiba N300 6TB NAS HDD - 139€</option>
+              <option value="seagate-firecuda-530-1tb" data-price="119">Seagate FireCuda 530 1TB NVMe SSD - 119€</option>
+              <option value="kingston-fury-renegade-1tb" data-price="109">Kingston Fury Renegade 1TB NVMe SSD - 109€</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Energieversorgung</td>
+          <td>
+            <select id="power-supply" name="power-supply">
+              <option value="-" data-price="0">-</option>
+              <option value="corsair-rm850x" data-price="129">Corsair RM850x 850W 80+ Gold - 129€</option>
+              <option value="bequiet-straight-power-11-850w" data-price="139">be quiet! Straight Power 11 850W 80+ Gold - 139€</option>
+              <option value="seasonic-focus-gx-850" data-price="129">Seasonic Focus GX-850 80+ Gold - 129€</option>
+              <option value="cooler-master-v850-gold" data-price="119">Cooler Master V850 Gold V2 Full Modular - 119€</option>
+              <option value="thermaltake-toughpower-gf1-850w" data-price="119">Thermaltake Toughpower GF1 850W 80+ Gold - 119€</option>
+              <option value="corsair-rm750x" data-price="109">Corsair RM750x 750W 80+ Gold - 109€</option>
+              <option value="bequiet-pure-power-12-m-750w" data-price="99">be quiet! Pure Power 12 M 750W 80+ Gold - 99€</option>
+              <option value="seasonic-focus-gm-750" data-price="99">Seasonic Focus GM-750 80+ Gold Semi-Modular - 99€</option>
+              <option value="fsp-hydro-g-pro-750w" data-price="95">FSP Hydro G Pro 750W 80+ Gold - 95€</option>
+              <option value="evga-supernova-750-g6" data-price="109">EVGA SuperNOVA 750 G6 80+ Gold - 109€</option>
+              <option value="corsair-rm650x" data-price="89">Corsair RM650x 650W 80+ Gold - 89€</option>
+              <option value="bequiet-straight-power-11-650w" data-price="99">be quiet! Straight Power 11 650W 80+ Gold - 99€</option>
+              <option value="seasonic-core-gx-650" data-price="85">Seasonic Core GX-650 80+ Gold - 85€</option>
+              <option value="cooler-master-mwe-gold-650w" data-price="79">Cooler Master MWE Gold 650W Full Modular - 79€</option>
+              <option value="thermaltake-toughpower-gf-650w" data-price="85">Thermaltake Toughpower GF 650W 80+ Gold - 85€</option>
+              <option value="corsair-cx650m" data-price="69">Corsair CX650M 650W 80+ Bronze Semi-Modular - 69€</option>
+              <option value="bequiet-system-power-10-650w" data-price="65">be quiet! System Power 10 650W 80+ Bronze - 65€</option>
+              <option value="seasonic-s12iii-650w" data-price="59">Seasonic S12III 650W 80+ Bronze - 59€</option>
+              <option value="evga-600-br" data-price="55">EVGA 600 BR 80+ Bronze - 55€</option>
+              <option value="thermaltake-smart-600w" data-price="49">Thermaltake Smart 600W 80+ White - 49€</option>
+              <option value="cooler-master-mwe-bronze-550w" data-price="52">Cooler Master MWE Bronze 550W - 52€</option>
+              <option value="fsp-hexa-85-plus-550w" data-price="49">FSP HEXA 85+ 550W 80+ Bronze - 49€</option>
+              <option value="sharkoon-wpm-gold-zero-550w" data-price="59">Sharkoon WPM Gold ZERO 550W Semi-Modular - 59€</option>
+              <option value="inter-tech-argus-550w" data-price="45">Inter-Tech Argus 550W 80+ Bronze - 45€</option>
+              <option value="azza-psaz-650w" data-price="55">AZZA PSAZ 650W 80+ Bronze - 55€</option>
+              <option value="corsair-rm1000x" data-price="159">Corsair RM1000x 1000W 80+ Gold - 159€</option>
+              <option value="bequiet-dark-power-13-1000w" data-price="189">be quiet! Dark Power 13 1000W 80+ Titanium - 189€</option>
+              <option value="seasonic-prime-tx-1000" data-price="199">Seasonic Prime TX-1000 80+ Titanium - 199€</option>
+              <option value="thermaltake-toughpower-pf1-1200w" data-price="209">Thermaltake Toughpower PF1 1200W 80+ Platinum - 209€</option>
+              <option value="evga-supernova-1300-g2" data-price="229">EVGA SuperNOVA 1300 G2 80+ Gold - 229€</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Gehäuse</td>
+          <td>
+            <select id="case" name="case">
+              <option value="-" data-price="0">-</option>
+              <option value="nzxt-h510" data-price="79">NZXT H510 Mid-Tower - 79€</option>
+              <option value="corsair-4000d-airflow" data-price="89">Corsair 4000D Airflow - 89€</option>
+              <option value="fractal-meshify-c" data-price="99">Fractal Design Meshify C - 99€</option>
+              <option value="phanteks-eclipse-p400a" data-price="85">Phanteks Eclipse P400A - 85€</option>
+              <option value="bequiet-pure-base-500dx" data-price="99">be quiet! Pure Base 500DX - 99€</option>
+              <option value="lian-li-lancool-ii-mesh" data-price="95">Lian Li Lancool II Mesh - 95€</option>
+              <option value="cooler-master-nr600" data-price="75">Cooler Master NR600 - 75€</option>
+              <option value="thermaltake-v200-rgb" data-price="69">Thermaltake V200 RGB - 69€</option>
+              <option value="msi-mag-forge-100r" data-price="72">MSI MAG Forge 100R - 72€</option>
+              <option value="aerocool-tower-x3" data-price="49">Aerocool Tower X3 - 49€</option>
+              <option value="corsair-5000d-airflow" data-price="139">Corsair 5000D Airflow - 139€</option>
+              <option value="fractal-define-7" data-price="169">Fractal Design Define 7 - 169€</option>
+              <option value="nzxt-h7-flow" data-price="129">NZXT H7 Flow - 129€</option>
+              <option value="phanteks-enthoo-pro" data-price="119">Phanteks Enthoo Pro - 119€</option>
+              <option value="bequiet-silent-base-802" data-price="159">be quiet! Silent Base 802 - 159€</option>
+              <option value="lian-li-o11-dynamic" data-price="135">Lian Li O11 Dynamic - 135€</option>
+              <option value="cooler-master-haf-700" data-price="249">Cooler Master HAF 700 - 249€</option>
+              <option value="thermaltake-core-p3" data-price="129">Thermaltake Core P3 TG - 129€</option>
+              <option value="inwin-303" data-price="99">InWin 303 - 99€</option>
+              <option value="deepcool-macube-110" data-price="59">DeepCool MACUBE 110 - 59€</option>
+              <option value="fractal-pop-air" data-price="79">Fractal Design Pop Air - 79€</option>
+              <option value="nzxt-h210" data-price="89">NZXT H210 Mini-ITX - 89€</option>
+              <option value="cooler-master-q300l" data-price="49">Cooler Master MasterBox Q300L - 49€</option>
+              <option value="silverstone-fara-r1" data-price="55">SilverStone FARA R1 - 55€</option>
+              <option value="corsair-icue-5000t-rgb" data-price="329">Corsair iCUE 5000T RGB - 329€</option>
+              <option value="lian-li-o11-dynamic-evo" data-price="169">Lian Li O11 Dynamic EVO - 169€</option>
+              <option value="asus-rog-strix-helio" data-price="289">ASUS ROG Strix Helios - 289€</option>
+              <option value="montech-air-100-argb" data-price="59">Montech Air 100 ARGB - 59€</option>
+              <option value="zalman-s3-rgb" data-price="45">Zalman S3 RGB - 45€</option>
+              <option value="darkflash-dlx21" data-price="65">DarkFlash DLX21 Mesh - 65€</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Betriebssystem</td>
+          <td>
+            <select id="operating-system" name="operating-system">
+              <option value="-" data-price="0">-</option>
+              <option value="windows-11-home" data-price="119">Windows 11 Home - 119€</option>
+              <option value="windows-11-pro" data-price="149">Windows 11 Pro - 149€</option>
+              <option value="windows-10-home" data-price="109">Windows 10 Home - 109€</option>
+              <option value="windows-10-pro" data-price="139">Windows 10 Pro - 139€</option>
+              <option value="windows-11-home-oem" data-price="99">Windows 11 Home OEM - 99€</option>
+              <option value="windows-11-pro-oem" data-price="129">Windows 11 Pro OEM - 129€</option>
+              <option value="windows-server-2022" data-price="529">Windows Server 2022 - 529€</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="configurator-summary">
+      <div class="configurator-summary">
+        <p>Gesamtkosten: <span id="total-price">0€</span></p>
+      </div>
+    </div>
+    <button type="button" onclick="saveConfiguration()">Konfiguration speichern</button>
+  </section>
+
+  <script src="configurator.js"></script>
+
+  <footer>
+    <p>&copy; 2025 HighSpeed-Sales. Alle Rechte vorbehalten.</p>
+    <a href="privacy.html">Datenschutz</a>
+    <a href="faq.html">FAQ</a>
+    <a href="terms.html">AGB</a>
+  </footer>
+
+</body>
+</html>
