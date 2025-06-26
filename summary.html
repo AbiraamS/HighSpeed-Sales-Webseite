@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfigurationsübersicht</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <img src="HighSpeed_Logo_weiß-blau-groeßer.png" alt="HighSpeed-Sales Logo" class="navbar-logo">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="configurator.html">PC-Konfigurator</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a href="cart.html" class="cart-icon">
+        <img src="Einkaufswagen.png" alt="Warenkorb" class="cart-icon-image">
+        <span class="cart-count" id="cart-count">0</span>
+      </a>
+  </header>
+
+  <!-- Zusammenfassung -->
+  <section class="summary">
+    <h1>Ihre Konfiguration</h1>
+    <p>Hier sind die von Ihnen ausgewählten Komponenten:</p>
+    <div class="summary-details">
+      <ul>
+        <li><strong>CPU:</strong> <span id="summary-cpu">-</span></li>
+        <li><strong>CPU-Kühler:</strong> <span id="summary-cpu-cooler">-</span></li>
+        <li><strong>Grafikkarte:</strong> <span id="summary-gpu">-</span></li>
+        <li><strong>Motherboard:</strong> <span id="summary-motherboard">-</span></li>
+        <li><strong>RAM:</strong> <span id="summary-ram">-</span></li>
+        <li><strong>Speicher:</strong> <span id="summary-storage">-</span></li>
+        <li><strong>Energieversorgung:</strong> <span id="summary-power-supply">-</span></li>
+        <li><strong>Gehäuse:</strong> <span id="summary-case">-</span></li>
+      </ul>
+    </div>
+    <button class="btn-submit" onclick="addToCart()">Zum Warenkorb hinzufügen</button>
+  </section>
+
+
+  <section class="summary">
+    <h1>Zusammenfassung Ihrer Bestellung</h1>
+    <div id="checkout-summary">
+      <!-- Daten werden hier dynamisch eingefügt -->
+    </div>
+  </section>
+  
+  <script>
+    // Daten aus localStorage abrufen
+    const checkoutData = JSON.parse(localStorage.getItem('checkoutData'));
+  
+    // Zusammenfassung anzeigen
+    const summaryElement = document.getElementById('checkout-summary');
+    if (checkoutData) {
+      summaryElement.innerHTML = `
+        <p><strong>Vorname:</strong> ${checkoutData.firstName}</p>
+        <p><strong>Name:</strong> ${checkoutData.lastName}</p>
+        <p><strong>Adresse:</strong> ${checkoutData.address}</p>
+        <p><strong>Stadt:</strong> ${checkoutData.city}</p>
+        <p><strong>Postleitzahl:</strong> ${checkoutData.postalCode}</p>
+        <p><strong>E-Mail:</strong> ${checkoutData.email}</p>
+        <p><strong>Telefonnummer:</strong> ${checkoutData.phone}</p>
+        <p><strong>Zahlungsmethode:</strong> ${checkoutData.paymentMethod}</p>
+        ${
+          checkoutData.paymentMethod === 'credit-card'
+            ? `<p><strong>Kreditkartennummer:</strong> ${checkoutData.cardNumber}</p>
+               <p><strong>Ablaufdatum:</strong> ${checkoutData.expiryDate}</p>
+               <p><strong>CVV:</strong> ${checkoutData.cvv}</p>`
+            : ''
+        }
+      `;
+    } else {
+      summaryElement.innerHTML = '<p>Keine Daten verfügbar.</p>';
+    }
+  </script>
+
+  <footer>
+    <p>&copy; 2025 HighSpeed-Sales. Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <script src="summary.js"></script>
+
+  <footer>
+    <p>&copy; 2025 HighSpeed-Sales. Alle Rechte vorbehalten.</p>
+    <a href="privacy.html">Datenschutz</a>
+    <a href="faq.html">FAQ</a>
+    <a href="terms.html">AGB</a>
+  </footer>
+
+</body>
+</html>

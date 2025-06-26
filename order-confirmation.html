@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bestellbestätigung - HighSpeed-Sales</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .navbar {
+      background-color: white;
+      color: #2e86de;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-logo {
+      height: 97px;
+    }
+
+    .confirmation {
+      max-width: 600px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+      <img src="HighSpeed_Logo_weiß-blau-groeßer.png" alt="HighSpeed-Sales Logo" class="navbar-logo">
+    </a>
+  </header>
+
+  <div class="confirmation">
+    <h1>Danke für Ihre Bestellung!</h1>
+    <p>Hier sind Ihre Bestelldetails:</p>
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Adresse:</strong> <span id="address"></span></p>
+    <p><strong>Betrag:</strong> <span id="amount">€0.00</span></p>
+    <p><strong>Zahlungsart:</strong> <span id="payment-method"></span></p>
+    <p><strong>Bestellnummer:</strong> <span class="order-number" id="order-number"></span></p>
+    <div class="cart-items">
+      <h2>Gekaufte Artikel:</h2>
+      <ul id="cart-items-list"></ul>
+    </div>
+  </div>
+
+  <script>
+    const orderData = JSON.parse(localStorage.getItem('orderData'));
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalPrice = 0;
+
+    cart.forEach(item => {
+      totalPrice += item.price || 0;
+    });
+
+    if (orderData) {
+      document.getElementById('name').textContent = `${orderData.firstName} ${orderData.name}`;
+      document.getElementById('address').textContent = `${orderData.address}, ${orderData.city}, ${orderData.postalCode}`;
+      document.getElementById('payment-method').textContent = orderData.paymentMethod;
+      document.getElementById('order-number').textContent = orderData.orderNumber;
+      document.getElementById('amount').textContent = `€${totalPrice.toFixed(2)}`;
+
+      const cartItemsList = document.getElementById('cart-items-list');
+      cart.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `
+          ${item.cpu || ''} 
+          ${item.gpu || ''} 
+          ${item.ram || ''} 
+          ${item.storage || ''} 
+          ${item.case || ''} 
+          ${item.cpuCooler || ''} 
+          ${item.motherboard || ''} 
+          ${item.powerSupply || ''} 
+          ${item.os || ''} 
+          - €${item.price || 'Preis nicht angegeben'}
+        `.trim();
+        cartItemsList.appendChild(listItem);
+      });
+    } else {
+      document.querySelector('.confirmation').innerHTML = '<p>Keine Bestelldaten gefunden.</p>';
+    }
+  </script>
+
+<div style="text-align: center; margin-top: 20px;">
+    <button onclick="clearStorageAndRedirect()" style="padding: 10px 20px; background-color: #2e86de; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem;">
+      Zurück zur Startseite
+    </button>
+  </div>
+  
+  <script>
+    function clearStorageAndRedirect() {
+      localStorage.clear(); // Löscht den gesamten localStorage
+      window.location.href = 'home.html'; // Leitet zur Startseite weiter
+    }
+  </script>
+
+</body>
+</html>

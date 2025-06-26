@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - HighSpeed-Sales</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .navbar {
+      background-color: white;
+      color: #2e86de;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .navbar-logo {
+      height: 97px;
+    }
+
+    .dropdown {
+      position: absolute;
+      right: 0px;
+      top: 29px;
+      transform: translateY(-50%);
+      z-index: 5;
+    }
+
+    .dropdown-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 2.5rem;
+      padding: 5px;
+    }
+
+    .dropdown-button::before {
+      content: "☰";
+      font-size: 2.5rem;
+      color: #2e86de;
+    }
+
+    .dropdown-button:hover::before {
+      color: #1b4f91;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      width: 100vw;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 10px 0;
+      list-style: none;
+      margin: 0;
+      z-index: 1000;
+    }
+
+    .dropdown-menu li {
+      padding: 15px 20px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu li:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+    }
+
+    .dropdown-menu li a:hover {
+      color: #2e86de;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center; /* Elemente horizontal zentrieren */
+  }
+
+  .category-card.betriebssysteme {
+  grid-column: 1 / -1; /* Nimmt die gesamte Breite ein */
+  justify-self: center; /* Zentriert das Element horizontal */
+  width: 250px; /* Setzt eine feste Breite für die Karte */
+  height: 300px; /* Stellt sicher, dass die Höhe gleich bleibt */
+}
+
+.category-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  width: 100%; /* Stellt sicher, dass die Karten die volle Breite der Spalte einnehmen */
+  height: 300px; /* Einheitliche Höhe für alle Karten */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Inhalt gleichmäßig verteilen */
+}
+
+    .category-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .category-card img {
+  width: 100%;
+  height: 200px; /* Einheitliche Höhe für alle Bilder */
+  object-fit: cover; /* Bilder werden zugeschnitten, um die Größe zu erfüllen */
+}
+
+.category-content {
+  padding: 15px;
+  flex-grow: 1; /* Stellt sicher, dass der Inhalt den verbleibenden Platz ausfüllt */
+}
+
+    .category-content h3 {
+      font-size: 1.2rem;
+      color: #2e86de;
+      margin: 0;
+    }
+
+    footer {
+      background-color: #2e86de;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="home.html">
+      <img src="HighSpeed_Logo_weiß-blau-groeßer.png" alt="HighSpeed-Sales Logo" class="navbar-logo">
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <button class="dropdown-button"></button>
+          <ul class="dropdown-menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="configurator.html">PC-Konfigurator</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="cart.html" class="cart-icon">
+      <img src="Einkaufswagen.png" alt="Warenkorb" class="cart-icon-image">
+      <span class="cart-count" id="cart-count">0</span>
+    </a>
+  </header>
+
+  <!-- Kategorien-Grid -->
+  <section id="categories" class="categories-grid">
+    <a href="cpus.html" class="category-card">
+      <img src="cpu.jpg" alt="CPUs">
+      <div class="category-content">
+        <h3>CPUs</h3>
+      </div>
+    </a>
+    <a href="ram.html" class="category-card">
+      <img src="ram.jpg" alt="RAM">
+      <div class="category-content">
+        <h3>RAM</h3>
+      </div>
+    </a>
+    <a href="grafikkarten.html" class="category-card">
+      <img src="gpu.jpg" alt="Grafikkarten">
+      <div class="category-content">
+        <h3>Grafikkarten</h3>
+      </div>
+    </a>
+    <a href="motherboards.html" class="category-card">
+      <img src="motherboard.png" alt="Motherboards">
+      <div class="category-content">
+        <h3>Motherboards</h3>
+      </div>
+    </a>
+    <a href="speicher.html" class="category-card">
+      <img src="ssd.png" alt="Speicher">
+      <div class="category-content">
+        <h3>Speicher</h3>
+      </div>
+    </a>
+    <a href="cases.html" class="category-card">
+      <img src="cases.jpg" alt="Cases">
+      <div class="category-content">
+        <h3>Cases</h3>
+      </div>
+    </a>
+    <a href="cpu-kuehler.html" class="category-card">
+      <img src="kueler.jpg" alt="CPU-Kühler">
+      <div class="category-content">
+        <h3>CPU-Kühler</h3>
+      </div>
+    </a>
+    <a href="energieversorgung.html" class="category-card">
+      <img src="power.png" alt="Energieversorgung">
+      <div class="category-content">
+        <h3>Power Supply</h3>
+      </div>
+    </a>
+    <a href="betriebssysteme.html" class="category-card betriebssysteme">
+      <img src="os.png" alt="Betriebssysteme">
+      <div class="category-content">
+        <h3>Betriebssysteme</h3>
+      </div>
+    </a>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    // Aktualisiere die Warenkorb-Anzeige beim Laden der Seite
+    window.onload = function () {
+      updateCartCount();
+    };
+  </script>
+
+  <footer>
+    <p>&copy; 2025 HighSpeed-Sales. Alle Rechte vorbehalten.</p>
+    <a href="privacy.html">Datenschutz</a>
+    <a href="faq.html">FAQ</a>
+    <a href="terms.html">AGB</a>
+  </footer>
+</body>
+</html>

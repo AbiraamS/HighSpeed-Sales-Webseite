@@ -1,0 +1,874 @@
+/* Gesamter Hintergrund */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.background {
+  background-color: #2e86de; /* schönes Blau */
+  height: 100%; /* Vollständige Höhe */
+  margin: 0; /* Kein Abstand von oben */
+  display: flex;
+  align-items: flex-start; /* Inhalt oben ausrichten */
+  justify-content: center;
+  position: relative; /* Für absolute Positionierung der .dashboard */
+}
+
+.dashboard {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 2cm); /* 2 cm Abstand von oben */
+  background-color: #d9d9d9; /* Grau */
+  border-radius: 0; /* Keine Abrundung */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Gesamter Hintergrund */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.background {
+  background-color: #2e86de; /* schönes Blau */
+  height: 100%; /* Vollständige Höhe */
+  margin: 0; /* Kein Abstand von oben */
+  display: flex;
+  align-items: flex-start; /* Inhalt oben ausrichten */
+  justify-content: center;
+  position: relative; /* Für absolute Positionierung der .dashboard */
+}
+
+.dashboard {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 1cm); /* 2 cm Abstand von oben */
+  background-color: #d9d9d9; /* Grau */
+  border-radius: 25px 25px 0 0; /* Abrundung oben links und oben rechts */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.inner-dashboard {
+  position: absolute;
+  top: 3.5cm; /* 6 cm von oben innerhalb des grauen Dashboards */
+  left: 4.83cm;/* Höhe des weißen Dashboards (Abzug von oben und unten) */
+  right: 3px;
+  bottom: 0;
+  background-color: #ffffff; /* Weißer Hintergrund */
+  border-radius: 0px; /* Abrundung der Ecken */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
+  padding: 20px; /* Innenabstand für den Inhalt */
+  z-index: 1; /* Über der grauen Fläche */
+  overflow: hidden; /* Verhindert, dass Inhalte über den Bereich hinausgehen */
+}
+
+.profile-picture {
+  position: absolute;
+  top: 1cm; /* 1 cm von oben innerhalb der grauen Fläche */
+  left: 1cm; /* 1 cm von links innerhalb der grauen Fläche */
+  width: 70px; /* Breite des Bildes */
+  height: 70px; /* Höhe des Bildes */
+  border-radius: 50%; /* Rundes Bild */
+  object-fit: cover; /* Bild skalieren, um den Rahmen zu füllen */
+  border: 2px solid white; /* Weißer Rand um das Bild */
+  z-index: 1; /* Sicherstellen, dass das Bild sichtbar ist */
+}
+
+.dashboard h1 {
+  margin-top: 65px; /* Abstand von oben */
+  margin-left: 5.33cm;
+  color: #437cc6;
+  text-align: left; /* Zentriert den Text horizontal */
+  font-size: 24px; /* Schriftgröße anpassen */
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Abstand zwischen den Buttons */
+  margin-top: 20px; /* Abstand von oben innerhalb des weißen Dashboards */
+}
+
+button {
+  padding: 15px;
+  border: none;
+  background-color: #d1d1d1;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #c0c0c0;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  padding: 15px;
+  border: none;
+  background-color: #d1d1d1;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #c0c0c0;
+}
+
+.horizontal-line {
+  width: 100%; /* Linie erstreckt sich über die gesamte Breite */
+  margin-top: 1cm;
+  height: 2px; /* Höhe der Linie */
+  background-color: #b0aeaeda; /* Farbe der Linie (weiß) */
+}
+
+/* Startseite */
+.start-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #2e86de; /* Blau */
+  font-family: Arial, sans-serif;
+}
+
+.white-box {
+  background-color: #ffffff; /* Weißer Hintergrund */
+  padding: 30px;
+  border-radius: 10px; /* Abgerundete Ecken */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten für das Rechteck */
+  text-align: center;
+  width: 300px; /* Breite des Rechtecks */
+  height: 10cm;
+}
+
+.white-box h1 {
+  font-size: 2.5rem;
+  color: #2e86de; /* Blaue Schrift */
+  margin-bottom: 30px;
+}
+
+.white-box p {
+  color: #333; /* Dunkle Schrift */
+  margin-bottom: 15px;
+}
+
+#code-input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%; /* Nimmt die volle Breite des Containers ein */
+  box-sizing: border-box; /* Bezieht Padding und Border in die Breite ein */
+  text-align: left; /* Text linksbündig im Eingabefeld */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #2e86de;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1b4f91;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.logo-image {
+  width: 70px; /* Breite des Logos */
+  height: 70px; /* Höhe des Logos */
+  border-radius: 50%; /* Rundes Bild */
+  object-fit: cover; /* Bild skalieren, um den Rahmen zu füllen */
+  margin-top: 25px;
+  margin-bottom: auto; /* Abstand zwischen dem Logo und dem Titel */
+  border: 2px solid #2e86de; /* Optional: Blauer Rand um das Logo */
+}
+
+
+/* Navigation auf die Home Seite*/
+.navbar {
+  display: flex;
+  align-items: center; /* Zentriert das Logo und die Links vertikal */
+  justify-content: space-between; /* Verteilt das Logo und die Links */
+  padding: 20px;
+  background-color: white; /* Blau */
+  color: #2e86de;
+  position: relative;
+}
+
+.navbar-logo {
+  width: 180px; /* Breite des Logos */
+  height: auto; /* Höhe wird proportional zur Breite angepasst */
+  display: block; /* Stellt sicher, dass das Logo korrekt dargestellt wird */
+  margin: 0 auto; /* Zentriert das Logo innerhalb des Containers */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Erhöht den Abstand zwischen den Links */
+  position: absolute; /* Ermöglicht die exakte Platzierung */
+  right: 20px; /* Positioniert die Links ganz rechts */
+}
+
+.nav-links li a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 1.2rem; /* Erhöht die Schriftgröße der Links */
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  color: #2e86de;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Sections */
+.section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  color: #2e86de;
+  margin-bottom: 20px;
+}
+
+.section p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.section button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.section button:hover {
+  background-color: #1b4f91;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #2e86de;
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* Slideshow Container */
+.slideshow-container {
+  position: relative;
+  width: 100%; /* Nimmt die gesamte Breite des Bildschirms ein */
+  height: 600px; /* Höhe der Slideshow */
+  margin: auto;
+  margin-top: -200px; /* Verschiebt die Slideshow nach oben */
+  overflow: hidden; /* Verhindert, dass Inhalte außerhalb des Containers angezeigt werden */
+  background-color: #000; /* Optional: Hintergrundfarbe für den Fall, dass Bilder nicht geladen werden */
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s ease-in-out; /* Übergang für das Wischen */
+}
+
+.slide img {
+  width: 100%; /* Bilder nehmen die volle Breite des Containers ein */
+  height: 100%; /* Bilder füllen die Höhe des Containers */
+  object-fit: cover; /* Skaliert die Bilder, um den Container zu füllen */
+}
+
+/* Animation für das Wischen */
+@keyframes slideEffect {
+  from {
+    transform: translateX(100%); /* Startet rechts außerhalb des Containers */
+  }
+  to {
+    transform: translateX(0); /* Bewegt sich in den sichtbaren Bereich */
+  }
+}
+
+
+/*shop*/
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.categories button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.categories button:hover {
+  background-color: #1b4f91;
+}
+
+.products {
+  text-align: center;
+  padding: 20px;
+}
+
+.products button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.products button:hover {
+  background-color: #1b4f91;
+}
+/* Shop Kategorien */
+.shop-categories {
+  text-align: center;
+  padding: 10px 20px; /* Beibehaltung der Abstände */
+  background-color: transparent; /* Hintergrundfarbe entfernen */
+  width: 100%; /* Breite auf den gesamten Bildschirm setzen */
+  margin-top: 20px; /* Abstand nach oben */
+}
+
+.shop-categories h1 {
+  font-size: 2rem; /* Schriftgröße anpassen */
+  color: rgb(0, 0, 0); /* Textfarbe */
+  margin-bottom: 10px;
+}
+
+.shop-categories p {
+  font-size: 1rem; /* Schriftgröße anpassen */
+  color: rgb(0, 0, 0);
+  margin-bottom: 20px;
+}
+
+/* Kategorien-Grid */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Dynamische Spalten */
+  gap: 20px; /* Abstand zwischen den Karten */
+  justify-items: center; /* Zentriert die Karten innerhalb der Spalten */
+  padding: 20px;
+}
+
+.category-card {
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Stellt sicher, dass der Titel über dem Bild steht */
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.05); /* Vergrößert die Karte leicht beim Hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten beim Hover */
+}
+
+.category-card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000; /* Schriftfarbe auf Schwarz ändern */
+  margin-bottom: 10px; /* Abstand unter dem Titel */
+}
+
+.category-card img {
+  width: 100%; /* Bild füllt die gesamte Breite */
+  height: 150px; /* Einheitliche Höhe für alle Bilder */
+  object-fit: cover; /* Skaliert das Bild, um den Rahmen zu füllen */
+  border-radius: 10px; /* Abgerundete Ecken */
+  margin-top: 10px; /* Abstand zwischen Titel und Bild */
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 1024px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 Spalten bei kleineren Bildschirmen */
+  }
+}
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr; /* 1 Spalte bei sehr kleinen Bildschirmen */
+  }
+}
+
+.category-card {
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Stellt sicher, dass der Titel über dem Bild steht */
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card img {
+  width: 100%; /* Bild füllt die gesamte Breite */
+  height: 150px; /* Einheitliche Höhe für alle Bilder */
+  object-fit: cover; /* Skaliert das Bild, um den Rahmen zu füllen */
+  border-radius: 10px; /* Abgerundete Ecken */
+  margin-top: 10px; /* Abstand zwischen Titel und Bild */
+}
+
+.category-card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2e86de; /* Blaue Schrift */
+  margin-bottom: 5px; /* Abstand unter dem Titel */
+}
+
+/* Kontakt Abschnitt */
+.contact-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #2e86de;
+  color: white;
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.contact-section button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: white;
+  color: #2e86de;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-section button:hover {
+  background-color: #1b4f91;
+  color: white;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #2e86de;
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* Kategorien-Grid mit Bildern */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Genau 4 Spalten */
+  gap: 30px; /* Abstand zwischen den Karten */
+  justify-items: center; /* Zentriert die Karten innerhalb der Spalten */
+  padding: 20px;
+}
+
+.categories-grid a {
+  text-decoration: none;
+  text-align: center;
+  color: #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.categories-grid a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.categories-grid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.categories-grid span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2e86de;
+}
+
+@media (max-width: 1024px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 Spalten bei kleineren Bildschirmen */
+  }
+}
+
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr; /* 1 Spalte bei sehr kleinen Bildschirmen */
+  }
+}
+
+
+/* PC-Konfigurator */
+.configurator {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.configurator h1 {
+  font-size: 2.5rem;
+  color: #2e86de;
+  margin-bottom: 20px;
+}
+
+.configurator p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.configurator-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-submit {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #1b4f91;
+}
+
+/* Zusammenfassung */
+.summary {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.summary h1 {
+  font-size: 2.5rem;
+  color: #2e86de;
+  margin-bottom: 20px;
+}
+
+.summary p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.summary-details ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.summary-details li {
+  margin-bottom: 10px;
+}
+
+.btn-submit {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #1b4f91;
+}
+
+/* Warenkorb */
+.cart {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.cart h1 {
+  font-size: 2.5rem;
+  color: #2e86de;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.cart-item h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.cart-item ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.cart-item li {
+  margin-bottom: 5px;
+}
+
+.btn-remove {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-remove:hover {
+  background-color: #c0392b;
+}
+
+.btn-submit {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #1b4f91;
+}
+
+
+/* Warenkorb-Icon */
+.cart-icon {
+  position: absolute;
+  top: 20px; /* Abstand von oben */
+  right: 20px; /* Abstand von rechts */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* Breite des Icons */
+  height: 50px; /* Höhe des Icons */
+  background-color: #2e86de; /* Hintergrundfarbe */
+  border-radius: 50%; /* Rundes Icon */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schatten */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart-icon:hover {
+  transform: scale(1.1); /* Vergrößert das Icon beim Hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stärkerer Schatten beim Hover */
+}
+
+.cart-icon-image {
+  width: 100%; /* Bild füllt die gesamte Breite des Icons */
+  height: 100%; /* Bild füllt die gesamte Höhe des Icons */
+  object-fit: cover; /* Skaliert das Bild, um den Kreis zu füllen */
+  border-radius: 50%; /* Rundet das Bild ab, um es an den Kreis anzupassen */
+}
+
+.cart-count {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #e74c3c; /* Rote Farbe */
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Warenkorb-Tabelle */
+/* Warenkorb leeren Button */
+.cart button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+.cart button:hover {
+  background-color: #0056b3;
+}
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.cart-table thead {
+  background-color: #007BFF;
+  color: white;
+}
+
+.cart-table th, .cart-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.cart-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.cart-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.cart-table button {
+  background-color: #FF4C4C;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-table button:hover {
+  background-color: #FF0000;
+}
+
+.cart-total {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
